@@ -42,8 +42,8 @@ body {
 
 /* HERO */
 .hero {
-  margin: 20px;
-  padding: 40px 20px;
+  margin: 15px;
+  padding: 30px 15px;
   border-radius: 2px;
   background: #000;
   border: 1px solid #333;
@@ -94,15 +94,16 @@ body {
   box-shadow: 0 0 20px rgba(62,198,184,0.5);
 }
 
-/* DIVISOR */
+/* DIVISOR - CENTRALIZADO E DISCRETO */
 .divisor {
     width: 100%;
-    height: 80px;
+    max-width: 400px;
+    height: 60px;
     background-image: url('img/divisor-icon.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 40px 0;
+    margin: 30px auto;
 }
 
 /* GRID */
@@ -111,6 +112,7 @@ body {
   grid-template-columns: 1fr;
   gap: 15px;
   padding: 20px;
+  margin-top: 20px;
 }
 
 .card {
@@ -129,10 +131,11 @@ body {
   transform: translateY(-5px);
 }
 
-/* ÍCONES DOS CARDS */
+/* ÍCONES DOS CARDS - COMPORTADOS E NÍTIDOS */
 .card-icon {
-  width: 60px;
-  height: auto;
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
   margin: 0 auto 15px;
   display: block;
   filter: drop-shadow(0 0 8px rgba(62, 198, 184, 0.6));
