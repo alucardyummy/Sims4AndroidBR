@@ -269,3 +269,56 @@ body {
     -webkit-touch-callout: none;
     pointer-events: none;
 }
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #0a0a0a;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    border: 1px solid rgba(62, 198, 184, 0.5);
+    border-radius: 20px;
+    padding: 25px;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 30px rgba(62, 198, 184, 0.2);
+}
+
+.modal-content h2 {
+    color: #3ec6b8;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.step-img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 1px solid #333;
+}
+
+.btn-download {
+    display: block;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 15px 0;
+}
