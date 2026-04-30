@@ -15,35 +15,33 @@
 </header>
 
 <main>
-
   <section class="hero">
-  <div class="hero-text">
-    <h1>Guia Completo</h1>
-    <p>Rode The Sims 4 no android + mods! Passo a passo :3</p>
-    <button class="primary" id="btn-comecar">Começar</button>
-  </div>
-</section>
+    <div class="hero-text">
+      <h1>Guia Completo</h1>
+      <p>Rode The Sims 4 no android + mods! Passo a passo :3</p>
+      <button class="primary" id="btn-comecar">Começar</button>
+    </div>
+  </section>
 
   <div class="divisor" id="meu-divisor" style="display: none;"></div>
 
   <section class="grid" id="guia-cards" style="display: none;">
-    
     <div class="card efeito-entrada" onclick="abrirModal('modal-download')">
-    <img src="img/download-icon.png" class="card-icon" alt="Download">
-    <h3>Download</h3>
-    <p>Baixar jogo + apps necessários</p>
-</div>
+      <img src="img/download-icon.png" class="card-icon" alt="Download">
+      <h3>Download</h3>
+      <p>Baixar jogo + apps necessários</p>
+    </div>
 
     <div class="card efeito-entrada" onclick="abrirModal('modal-instalacao')">
-    <img src="img/instalacao-icon.png" class="card-icon" alt="Instalação">
-    <h3>Instalação</h3>
-    <p>Configurar GameHub corretamente</p>
-</div>
+      <img src="img/instalacao-icon.png" class="card-icon" alt="Instalação">
+      <h3>Instalação</h3>
+      <p>Configurar GameHub corretamente</p>
+    </div>
     
     <div class="card efeito-entrada">
-    <div class="card-icon-placeholder">⚙️</div>
-    <h3>Configuração</h3>
-    <p>Ajustes de Wine e GPU para mais FPS</p>
+      <div class="card-icon-placeholder">⚙️</div>
+      <h3>Configuração</h3>
+      <p>Ajustes de Wine e GPU para mais FPS</p>
     </div>
     
     <div class="card">
@@ -53,22 +51,61 @@
     </div>
 
     <div class="card efeito-entrada">
-    <div class="card-icon-placeholder">PT</div>
-    <h3>Traduções</h3>
-    <p>Jogo e Mods totalmente em Português</p>
+      <div class="card-icon-placeholder">PT</div>
+      <h3>Traduções</h3>
+      <p>Jogo e Mods totalmente em Português</p>
     </div>
     
     <div class="card">
-      <h3>Problemas</h3>
       <img src="img/problemas-icon.png" class="card-icon">
+      <h3>Problemas</h3>
       <p>Corrigir bugs comuns</p>
     </div>
-    
   </section>
-
 </main>
 
-  <script>
+<div class="modal-overlay" id="modal-download">
+  <div class="modal-content efeito-entrada">
+    <button onclick="fecharModal('modal-download')" class="btn-fechar">×</button>
+    <h2>Download & Apps</h2>
+    <p>Primeiro, instale o 1DM. Ele é essencial para baixar o jogo base sem erros e com velocidade máxima.</p>
+    <a href="https://play.google.com/store/apps/details?id=idm.internet.download.manager" target="_blank" class="btn-download">Baixar 1DM</a>
+    <h3>Como configurar o 1DM:</h3>
+    <p>Assista ao vídeo abaixo para saber exatamente onde clicar após a instalação:</p>
+    <video class="step-video" controls playsinline>
+      <source src="video/1DM-demonstrativo.mp4" type="video/mp4">
+      Seu navegador não suporta o vídeo.
+    </video>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-instalacao">
+  <div class="modal-content efeito-entrada">
+    <button onclick="fecharModal('modal-instalacao')" class="btn-fechar">×</button>
+    <h2>Instalação do Jogo</h2>
+    <p>1. Primeiro, instale o <b>ZArchiver</b> e use-o para extrair o arquivo .zip na sua pasta de Downloads.</p>
+    <a href="https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver" target="_blank" class="btn-download">Baixar ZArchiver na Play Store</a>
+    <p><b>Tutorial de Extração:</b></p>
+    <video class="step-video" controls playsinline>
+      <source src="video/ExtracaoTutorial-demonstrativo.mp4" type="video/mp4">
+    </video>
+    <div class="divisor"></div>
+    <p>2. Baixe e instale o emulador <b>GameHub</b> pelo site oficial:</p>
+    <a href="https://gamehub.xiaoji.com/" target="_blank" class="btn-download">Baixar GameHub Oficial</a>
+    <p>3. No app, vá em <b>"Meu"</b> > <b>"Import Games"</b> e selecione <b>"Jogo PC"</b>.</p>
+    <p>4. Selecione o executável (.exe) neste caminho:</p>
+    <code style="color: #3ec6b8; font-size: 0.75rem; display: block; margin: 15px 0; background: #111; padding: 10px; border-radius: 8px; border: 1px solid rgba(62, 198, 184, 0.2);">
+      The Sims 4 Base Deluxe / The Sims 4 / Game / Bin / TS4_DX9_x64.exe
+    </code>
+    <p><b>Tutorial GameHub:</b></p>
+    <video class="step-video" controls playsinline>
+      <source src="video/GAMEHUB-demonstrativo.mp4" type="video/mp4">
+    </video>
+    <p><i>Dica: Se não encontrar a pasta, verifique se a extração terminou corretamente.</i></p>
+  </div>
+</div>
+
+<script>
   const btn = document.getElementById('btn-comecar');
   const cards = document.getElementById('guia-cards');
   const divisor = document.getElementById('meu-divisor');
@@ -77,96 +114,23 @@
 
   btn.addEventListener('click', () => {
     hero.style.display = 'none';
-
     topbar.style.display = 'flex';
     divisor.style.display = 'block';
     cards.style.display = 'grid';
-
-    requestAnimationFrame(() => {
-      topbar.classList.add('efeito-entrada');
-      divisor.classList.add('efeito-entrada');
-      cards.classList.add('efeito-entrada');
-    });
-
     window.scrollTo(0, 0);
   });
 
-    function abrirModal(id) {
-    const modal = document.getElementById(id);
-    modal.style.display = 'flex';
-}
+  function abrirModal(id) {
+    document.getElementById(id).style.display = 'flex';
+  }
 
-function fecharModal(id) {
+  function fecharModal(id) {
     const modal = document.getElementById(id);
     modal.style.display = 'none';
-    
     const videos = modal.querySelectorAll('video');
     videos.forEach(v => v.pause());
-}
-  </script>
+  }
+</script>
 
-  <div class="modal-overlay" id="modal-download">
-    <div class="modal-content efeito-entrada">
-        <button onclick="fecharModal('modal-download')" class="btn-fechar">×</button>
-        
-        <h2>Download & Apps</h2>
-        <p>Primeiro, instale o 1DM. Ele é essencial para baixar o jogo base sem erros e com velocidade máxima.</p>
-        
-        <a href="https://play.google.com/store/apps/details?id=idm.internet.download.manager" target="_blank" class="btn-download">
-            Baixar 1DM
-        </a>
-
-        <h3>Como configurar o 1DM:</h3>
-        <p>Assista ao vídeo abaixo para saber exatamente onde clicar após a instalação:</p>
-        
-        <video class="step-video" controls playsinline>
-            <source src="video/1DM-demonstrativo.mp4" type="video/mp4">
-            Seu navegador não suporta o vídeo.
-        </video>
-
-      <div class="modal-overlay" id="modal-instalacao">
-    <div class="modal-content efeito-entrada">
-        <button onclick="fecharModal('modal-instalacao')" class="btn-fechar">×</button>
-        
-        <h2>Instalação do Jogo</h2>
-        
-        <p>1. Primeiro, instale o <b>ZArchiver</b> e use-o para extrair o arquivo .zip na sua pasta de Downloads.</p>
-        
-        <a href="https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver" target="_blank" class="btn-download">
-            Baixar ZArchiver na Play Store
-        </a>
-
-        <p><b>Tutorial de Extração:</b></p>
-        <video class="step-video" controls playsinline>
-            <source src="video/ExtracaoTutorial-demonstrativo.mp4" type="video/mp4">
-            Seu navegador não suporta o vídeo.
-        </video>
-        
-        <div class="divisor"></div>
-
-        <p>2. Baixe e instale o emulador <b>GameHub</b> (Versão Android) pelo site oficial:</p>
-        
-        <a href="https://gamehub.xiaoji.com/" target="_blank" class="btn-download">
-            Baixar GameHub Oficial
-        </a>
-
-        <p>3. Abra o app, vá em <b>"Meu"</b> > <b>"Import Games"</b> e selecione <b>"Jogo PC"</b>. Autorize o acesso aos arquivos quando solicitado.</p>
-        
-        <p>4. Navegue pelo armazenamento até encontrar e selecionar o executável (.exe) neste caminho:</p>
-        
-        <code style="color: #3ec6b8; font-size: 0.75rem; display: block; margin: 15px 0; background: #111; padding: 10px; border-radius: 8px; border: 1px solid rgba(62, 198, 184, 0.2);">
-            The Sims 4 Base Deluxe / The Sims 4 / Game / Bin / TS4_DX9_x64.exe
-        </code>
-
-        <p><b>Tutorial GameHub:</b></p>
-        <video class="step-video" controls playsinline>
-            <source src="video/GAMEHUB-demonstrativo.mp4" type="video/mp4">
-            Seu navegador não suporta o vídeo.
-        </video>
-
-        <p><i>Dica: Se você não encontrar a pasta, verifique se a extração no ZArchiver terminou corretamente.</i></p>
-    </div>
-      </div>
-      
 </body>
 </html>
