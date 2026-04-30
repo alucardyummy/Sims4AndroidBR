@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<header class="topbar">
+<header class="topbar" id="minha-topbar">
   <div class="logo">Sims4AndroidBR</div>
   <button class="btn">Guia</button>
 </header>
@@ -59,23 +59,20 @@
   const btn = document.getElementById('btn-comecar');
   const cards = document.getElementById('guia-cards');
   const divisor = document.getElementById('meu-divisor');
+  const topbar = document.getElementById('minha-topbar');
+  const hero = document.querySelector('.hero');
 
   btn.addEventListener('click', () => {
+    topbar.style.display = 'none';
+    hero.style.display = 'none';
+
     cards.style.display = 'grid';
     divisor.style.display = 'block';
 
     cards.classList.add('efeito-entrada');
     divisor.classList.add('efeito-entrada');
-    
-    setTimeout(() => {
-      cards.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
-    
-    btn.style.transition = '0.5s';
-    btn.style.opacity = '0';
-    setTimeout(() => { btn.style.display = 'none'; }, 500);
   });
-</script>
+  </script>
 
 </body>
 </html>
