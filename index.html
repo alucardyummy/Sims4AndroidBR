@@ -38,7 +38,7 @@
       <p>Configurar GameHub corretamente</p>
     </div>
     
-    <div class="card efeito-entrada">
+    <div class="card efeito-entrada" onclick="abrirModal('modal-configuracao')">
       <div class="card-icon-placeholder">⚙️</div>
       <h3>Configuração</h3>
       <p>Ajustes de Wine e GPU para mais FPS</p>
@@ -50,7 +50,7 @@
       <p>Como instalar WickedWhims e CC</p>
     </div>
 
-    <div class="card efeito-entrada">
+    <div class="card efeito-entrada" onclick="abrirModal('modal-traducoes')">
       <div class="card-icon-placeholder">PT</div>
       <h3>Traduções</h3>
       <p>Jogo e Mods totalmente em Português</p>
@@ -68,6 +68,11 @@
   <div class="modal-content efeito-entrada">
     <button onclick="fecharModal('modal-download')" class="btn-fechar">×</button>
     <h2>Download & Apps</h2>
+    
+    <p style="background: rgba(62, 198, 184, 0.1); padding: 10px; border-radius: 8px; font-size: 0.9rem; border: 1px solid rgba(62, 198, 184, 0.3); color: #3ec6b8; margin-bottom: 15px;">
+      <b>Dica contra anúncios:</b> Ative o DNS Privado <b>dns.adguard.com</b> nas configurações do seu celular antes de prosseguir com o download.
+    </p>
+
     <p>Primeiro, instale o 1DM. Ele é essencial para baixar o jogo base sem erros e com velocidade máxima.</p>
     <a href="https://play.google.com/store/apps/details?id=idm.internet.download.manager" target="_blank" class="btn-download">Baixar 1DM</a>
     <h3>Como configurar o 1DM:</h3>
@@ -86,7 +91,7 @@
     <p>1. Primeiro, instale o <b>ZArchiver</b> e use-o para extrair o arquivo .zip na sua pasta de Downloads.</p>
     <a href="https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver" target="_blank" class="btn-download">Baixar ZArchiver na Play Store</a>
     <p><b>Tutorial de Extração:</b></p>
-    <video class="step-video" controls playsinline controlsList="nodownload" oncontextmenu="return false;">
+    <video class="step-video" controls playsinline controlsList="nodownload" oncontextmenu="false">
       <source src="video/ExtracaoTutorial-demonstrativo.mp4" type="video/mp4">
     </video>
     <div class="divisor"></div>
@@ -102,6 +107,45 @@
       <source src="video/GAMEHUB-demonstrativo.mp4" type="video/mp4">
     </video>
     <p><i>Dica: Se não encontrar a pasta, verifique se a extração terminou corretamente.</i></p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-configuracao">
+  <div class="modal-content efeito-entrada">
+    <button onclick="fecharModal('modal-configuracao')" class="btn-fechar">×</button>
+    <h2>⚙️ Ajustes de FPS</h2>
+    <p>Siga estas configs para o jogo rodar liso no seu Android:</p>
+    
+    <div class="config-box" style="background: #111; padding: 15px; border-radius: 12px; border: 1px solid #333; margin: 15px 0;">
+        <p><b>Geral:</b> Resolução em <span style="color: #3ec6b8;">960x544</span></p>
+        <p><b>Wine:</b> <span style="color: #3ec6b8;">wine9.5-x64-2</span></p>
+        <p><b>DXVK:</b> <span style="color: #3ec6b8;">dxvk-1.7.2</span></p>
+        <p><b>CPU:</b> <span style="color: #3ec6b8;">box64-0.39</span></p>
+    </div>
+
+    <p><b>Tutorial de Configuração:</b></p>
+    <video class="step-video" controls playsinline controlsList="nodownload" oncontextmenu="return false;">
+      <source src="video/ConfigsInternasGamehub-demonstrativo.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-traducoes">
+  <div class="modal-content efeito-entrada">
+    <button onclick="fecharModal('modal-traducoes')" class="btn-fechar">×</button>
+    <h2>PT-BR • Tradução</h2>
+    <p><b>1. Traduzir o Jogo Base:</b></p>
+    <p>Baixe o Language Changer e coloque na pasta Bin do jogo (onde fica o .exe).</p>
+    <a href="https://www.mediafire.com/file/m7pd9cqpn199m2s/language-changer.exe/file" target="_blank" class="btn-download">Baixar Language Changer</a>
+    
+    <p><b>2. Traduzir o WickedWhims:</b></p>
+    <p>Baixe o arquivo .package e jogue direto na pasta Mods.</p>
+    <a href="https://wicked.cc/translations/mutsvki/traducao-pt-br-wickedwhims-v180a-e-v182/" target="_blank" class="btn-download">Baixar Tradução Wicked</a>
+
+    <p><b>Tutorial de Tradução:</b></p>
+    <video class="step-video" controls playsinline controlsList="nodownload" oncontextmenu="return false;">
+      <source src="video/TRADUCAO-demonstrativo.mp4" type="video/mp4">
+    </video>
   </div>
 </div>
 
