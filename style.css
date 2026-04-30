@@ -1,1 +1,98 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #0f1117;
+  color: #fff;
+}
+
+/* HEADER */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.btn {
+  background: #2a2d3a;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+/* HERO */
+.hero {
+  margin: 16px;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #3ec6b8, #2a7fff);
+}
+
+.hero h1 {
+  font-size: 24px;
+}
+
+.hero p {
+  margin: 10px 0;
+  color: #eaeaea;
+}
+
+.primary {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+}
+
+.card {
+  background: #1a1d26;
+  padding: 16px;
+  border-radius: 16px;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card h3 {
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* TABLET+ */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  main {
+    max-width: 900px;
+    margin: auto;
+  }
+}
