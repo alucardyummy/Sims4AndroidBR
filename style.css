@@ -96,16 +96,16 @@ body {
 
 /* DIVISOR - CENTRALIZADO E DISCRETO */
 .divisor {
-    width: 100%;
-    max-width: 400px;
-    height: 60px;
+    width: 100%; 
+    height: 100px; 
     background-image: url('img/divisor-icon.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 30px auto;
+    margin: 20px 0; 
+    
+    filter: drop-shadow(0 0 12px rgba(62, 198, 184, 0.8)); 
 }
-
 /* GRID */
 .grid {
   display: grid;
