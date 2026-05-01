@@ -41,7 +41,8 @@ body {
   z-index: 99999;
   backdrop-filter: blur(2px);
   opacity: 0;
-  transition: opacity 0.15s ease-out;
+  transition: opacity 0.25s ease-out;
+  will-change: transform, opacity;
 }
 
 .topbar {
@@ -204,7 +205,7 @@ body {
   pointer-events: none;
   z-index: 99998;
   box-shadow: 0 0 3px #3ec6b8;
-  animation: cairEsumir 1s cubic-bezier(0.1, 0.5, 0.5, 1) forwards;
+  will-change: transform, opacity;
 }
 
 @keyframes cairEsumir {
@@ -212,11 +213,22 @@ body {
     transform: translate(0, 0) scale(1.5);
     opacity: 1;
   }
-  30% {
+  100% {
+    transform: translate(var(--x), calc(var(--y) + 100px)) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes brilharSuave {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  50% {
     opacity: 1;
   }
   100% {
-    transform: translate(var(--x), calc(var(--y) + 150px)) scale(0);
+    transform: translate(var(--x), var(--y)) scale(1.2);
     opacity: 0;
   }
 }
