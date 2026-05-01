@@ -39,7 +39,7 @@
         <p><b>Modelo:</b> Redmi Note 13 Pro 5G</p>
         <p><b>Processador:</b> MediaTek Dimensity 7200 Ultra</p>
         <p><b>RAM:</b> 12,0+6,0 GB</p>
-      <img src="nhaw.gif" style="width: 100%; height: auto; margin-top: 15px; border-radius: 8px; border: 1px solid rgba(62, 198, 184, 0.4); box-shadow: 0 0 15px rgba(62, 198, 184, 0.5); display: block; object-fit: cover;">
+      <img src="nhaw.gif" class="proibido" draggable="false" oncontextmenu="return false;" style="width: 100%; height: auto; margin-top: 15px; border-radius: 8px; border: 1px solid rgba(62, 198, 184, 0.4); box-shadow: 0 0 15px rgba(62, 198, 184, 0.5); display: block; object-fit: cover;">
     </div>
   </section>
 
@@ -306,16 +306,7 @@
     sessionStorage.setItem('guiaAberto', 'true');
     transicaoSuave();
   });
-
-  window.addEventListener('load', () => {
-    if (sessionStorage.getItem('guiaAberto') === 'true') {
-        hero.style.display = 'none';
-        topbar.style.display = 'flex';
-        divisor.style.display = 'block';
-        deviceInfo.style.display = 'block';
-        cards.style.display = 'grid';
-        muteBtn.style.display = 'flex';
-        
+  
         topbar.style.opacity = "1";
         divisor.style.opacity = "1";
         deviceInfo.style.opacity = "1";
