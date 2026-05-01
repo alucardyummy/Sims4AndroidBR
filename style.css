@@ -297,3 +297,9 @@ video::-webkit-media-controls-panel { width: calc(100% + 30px); }
   background: #3ec6b8;
   border-radius: 10px;
 }
+
+.proibido {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
