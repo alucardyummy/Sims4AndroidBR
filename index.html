@@ -5,10 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sims4AndroidBR</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Pequeno ajuste para garantir que a saída não pisque */
+    .fade-out {
+      opacity: 0;
+      filter: blur(20px);
+      transition: 0.5s ease;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
   
-<header class="topbar" id="minha-topbar" style="display: none;">
+<header class="topbar" id="minha-topbar" style="display: none; opacity: 0;">
   <a href="index.html" class="logo">
     <img src="img/SIMS4ANDROIDBR.png" alt="Sims4AndroidBR Logo" class="proibido">
   </a>
@@ -23,9 +32,9 @@
     </div>
   </section>
 
-  <div class="divisor" id="meu-divisor" style="display: none;"></div>
+  <div class="divisor" id="meu-divisor" style="display: none; opacity: 0;"></div>
 
-  <section id="device-info" style="display: none; padding: 0 20px;">
+  <section id="device-info" style="display: none; opacity: 0; padding: 0 20px;">
     <div class="config-box" style="border-color: rgba(62, 198, 184, 0.5); max-width: 600px; margin: 0 auto 20px auto; text-align: right;">
         <h3 style="font-size: 0.9rem; margin-bottom: 10px;">Informações do meu celular</h3>
         <p><b>Modelo:</b> Redmi Note 13 Pro 5G</p>
@@ -34,37 +43,32 @@
     </div>
   </section>
 
-  <section class="grid" id="guia-cards" style="display: none;">
+  <section class="grid" id="guia-cards" style="display: none; opacity: 0;">
     <div class="card" onclick="abrirModal('modal-download')">
       <img src="img/download-icon.png" class="card-icon proibido" alt="Download">
       <h3>Download</h3>
       <p>Baixar jogo + apps necessários</p>
     </div>
-
     <div class="card" onclick="abrirModal('modal-instalacao')">
       <img src="img/instalacao-icon.png" class="card-icon proibido" alt="Instalação">
       <h3>Instalação</h3>
       <p>Configurar GameHub corretamente</p>
     </div>
-    
     <div class="card" onclick="abrirModal('modal-configuracao')">
       <img src="img/problemas-icon.png" class="card-icon proibido" alt="Configuração">
       <h3>Configuração</h3>
       <p>Ajustes de Wine e GPU para mais FPS</p>
     </div>
-    
     <div class="card" onclick="abrirModal('modal-mods')">
       <img src="img/mods-icon.png" class="card-icon proibido">
       <h3>Mods</h3>
       <p>Como instalar WickedWhims e CC</p>
     </div>
-
     <div class="card" onclick="abrirModal('modal-traducoes')">
       <div class="card-icon-placeholder">PT</div>
       <h3>Traduções</h3>
       <p>Jogo e Mods totalmente em Português</p>
     </div>
-    
     <div class="card" onclick="abrirModal('modal-contêiner')">
       <div class="card-icon-placeholder">🖥️</div>
       <h3>Contêiner & Arquivos</h3>
@@ -92,58 +96,51 @@
   document.body.appendChild(muteBtn);
 
   muteBtn.addEventListener('click', () => {
-    if (bgMusic.muted) {
-      bgMusic.muted = false;
-      muteBtn.innerHTML = '🔊';
-    } else {
-      bgMusic.muted = true;
-      muteBtn.innerHTML = '🔇';
-    }
+    bgMusic.muted = !bgMusic.muted;
+    muteBtn.innerHTML = bgMusic.muted ? '🔇' : '🔊';
   });
 
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      bgMusic.pause();
-    } else {
-      if (hero.style.display === 'none' && !bgMusic.muted) {
-        bgMusic.play().catch(() => {});
-      }
-    }
+    if (document.hidden) bgMusic.pause();
+    else if (hero.style.display === 'none' && !bgMusic.muted) bgMusic.play().catch(() => {});
   });
 
-  // NOVA LÓGICA DE TRANSIÇÃO COM BLUR
-  function transicaoComBlur() {
-    // 1. Aplica o blur na tela atual (Hero)
-    hero.classList.add('efeito-entrada'); 
+  function transicaoSuave() {
+    // 1. Inicia o blur e fade out da tela atual
+    hero.classList.add('fade-out');
     bgMusic.play().catch(() => {});
 
-    // 2. Espera a animação de blur acontecer (500ms é o padrão do seu CSS)
+    // 2. Aguarda a animação de saída (500ms)
     setTimeout(() => {
-      // 3. Esconde a hero e mostra o conteúdo novo
       hero.style.display = 'none';
       
+      // 3. Prepara os elementos (display mas ainda invisíveis via opacity 0)
       topbar.style.display = 'flex';
       divisor.style.display = 'block';
       deviceInfo.style.display = 'block';
       cards.style.display = 'grid';
       muteBtn.style.display = 'flex';
 
-      // 4. Faz o conteúdo novo aparecer tirando o blur (suavemente)
-      setTimeout(() => {
-        topbar.classList.add('efeito-entrada');
-        divisor.classList.add('efeito-entrada');
-        deviceInfo.classList.add('efeito-entrada');
-        cards.classList.add('efeito-entrada');
-        
-        const cardElements = document.querySelectorAll('.card');
-        cardElements.forEach(card => card.classList.add('efeito-entrada'));
-        
-        window.scrollTo(0, 0);
-      }, 50);
-    }, 500); // Tempo exato para o usuário ver o "iniciar blur"
+      // 4. Dispara a entrada suave
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          topbar.style.opacity = "1";
+          divisor.style.opacity = "1";
+          deviceInfo.style.opacity = "1";
+          cards.style.opacity = "1";
+          
+          topbar.classList.add('efeito-entrada');
+          divisor.classList.add('efeito-entrada');
+          deviceInfo.classList.add('efeito-entrada');
+          cards.classList.add('efeito-entrada');
+          
+          window.scrollTo(0, 0);
+        }, 50);
+      });
+    }, 500);
   }
 
-  btn.addEventListener('click', transicaoComBlur);
+  btn.addEventListener('click', transicaoSuave);
 
   function abrirModal(id) {
     document.getElementById(id).style.display = 'flex';
@@ -152,8 +149,7 @@
   function fecharModal(id) {
     const modal = document.getElementById(id);
     modal.style.display = 'none';
-    const videos = modal.querySelectorAll('video');
-    videos.forEach(v => v.pause());
+    modal.querySelectorAll('video').forEach(v => v.pause());
   }
 </script>
 
