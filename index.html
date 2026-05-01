@@ -81,7 +81,6 @@
       <b>Dica contra anúncios:</b> Ative o DNS Privado <b>dns.adguard.com</b> nas configurações do seu celular antes de prosseguir com o download.
     </p>
     <h3>1. Onde baixar o jogo:</h3>
-    <p>Acesse o site <b>Knysims</b>, use a lupa para pesquisar por "Deluxe" e escolha a versão desejada.</p>
     <video class="step-video" controls playsinline controlsList="nodownload" oncontextmenu="return false;">
       <source src="video/KnySims+1DM.mp4" type="video/mp4">
     </video>
@@ -175,7 +174,7 @@
   const hero = document.querySelector('.hero');
   const deviceInfo = document.getElementById('device-info');
 
-  // CONFIGURAÇÃO DE ÁUDIO (Volume reduzido para 0.05)
+  // CONFIGURAÇÃO DE ÁUDIO (Volume 0.05)
   const bgMusic = new Audio('audio/Mii Editor - Mii Maker (Wii U) Music.mp3');
   bgMusic.loop = true;
   bgMusic.volume = 0.05; 
@@ -196,12 +195,13 @@
     }
   });
 
-  // Função para controlar áudio ao sair/entrar no Chrome
+  // Page Visibility Observer (Para ao sair do Chrome)
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       bgMusic.pause();
     } else {
-      if (sessionStorage.getItem('guiaAberto') === 'true' && !bgMusic.muted) {
+      // Só volta a tocar se o guia já foi iniciado pelo botão
+      if (hero.style.display === 'none' && !bgMusic.muted) {
         bgMusic.play().catch(() => {});
       }
     }
@@ -210,41 +210,31 @@
   function mostrarConteudo() {
     hero.style.display = 'none';
     
-    // Ativa os displays primeiro
+    // Mostra os elementos
     topbar.style.display = 'flex';
     divisor.style.display = 'block';
     deviceInfo.style.display = 'block';
     cards.style.display = 'grid';
     muteBtn.style.display = 'flex';
 
-    // Delay mínimo para o navegador processar o display:block antes de rodar a animação de blur
+    // Dispara as animações de entrada suave com Blur
     setTimeout(() => {
       topbar.classList.add('efeito-entrada');
       divisor.classList.add('efeito-entrada');
       deviceInfo.classList.add('efeito-entrada');
       cards.classList.add('efeito-entrada');
       
-      // Aplica o efeito individualmente nos cards para um visual mais fluido
       const cardElements = document.querySelectorAll('.card');
       cardElements.forEach(card => card.classList.add('efeito-entrada'));
     }, 10);
     
-    bgMusic.play().catch(() => console.log("Som aguardando clique"));
+    bgMusic.play().catch(() => console.log("Áudio aguardando interação"));
   }
 
+  // A ÚNICA forma de entrar no site agora é o clique manual
   btn.addEventListener('click', () => {
-    sessionStorage.setItem('guiaAberto', 'true');
     mostrarConteudo();
     window.scrollTo(0, 0);
-  });
-
-  window.addEventListener('load', () => {
-    if (sessionStorage.getItem('guiaAberto') === 'true') {
-        mostrarConteudo();
-        bgMusic.play().catch(() => {
-            document.addEventListener('click', () => bgMusic.play(), { once: true });
-        });
-    }
   });
 
   function abrirModal(id) {
