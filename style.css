@@ -125,14 +125,17 @@ body {
 }
 
 .card {
-  background: rgba(10, 10, 10, 0.5) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05) !important; 
+  backdrop-filter: blur(15px) saturate(150%);
+  -webkit-backdrop-filter: blur(15px) saturate(150%);
+  
   padding: 20px;
-  border-radius: 15px; 
+  border-radius: 15px;
+  border: 1px solid rgba(62, 198, 184, 0.3); 
+  
+  box-shadow: inset 0 0 15px rgba(62, 198, 184, 0.1), 0 10px 30px rgba(0, 0, 0, 0.5);
+  
   transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(62, 198, 184, 0.4);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,9 +143,10 @@ body {
 }
 
 .card:hover {
-  border-color: #3ec6b8;
+  background: rgba(62, 198, 184, 0.1) !important;
+  border-color: rgba(62, 198, 184, 0.8);
   transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(62, 198, 184, 0.8);
+  box-shadow: 0 0 30px rgba(62, 198, 184, 0.4);
 }
 
 .card:active {
@@ -286,13 +290,16 @@ video::-webkit-media-controls-panel { width: calc(100% + 30px); }
 }
 
 .config-box {
-  background: rgba(20, 20, 20, 0.4) !important; 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(62, 198, 184, 0.05) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
   padding: 15px;
   border-radius: 12px;
-  border: 1px solid rgba(62, 198, 184, 0.3);
+  border: 1px solid rgba(62, 198, 184, 0.4);
   margin: 15px 0;
+  
+  box-shadow: 0 0 20px rgba(62, 198, 184, 0.15);
 }
 
 .config-box p {
