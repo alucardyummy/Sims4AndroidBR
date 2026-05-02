@@ -1,150 +1,247 @@
  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
 
 @font-face {
-    font-family: 'LemonMilk';
-    src: url('fonts/LEMONMILK-Medium.otf') format('opentype');
-    font-weight: 500;
+  font-family: 'LemonMilk';
+  src: url('fonts/LEMONMILK-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Space Grotesk', sans-serif;
-    -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background-color: #0a0a0a;
-    overflow-x: hidden;
+  background-color: #0a0a0a;
+  font-family: 'Space Grotesk', sans-serif !important;
+  overscroll-behavior: none;
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: url('img/fundinho.png') no-repeat center center;
-    background-size: cover;
-    z-index: -10;
-    transform: translateZ(0);
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('img/fundinho.png') no-repeat center center;
+  background-size: cover;
+  z-index: -10;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 #custom-cursor {
-    position: fixed;
-    width: 50px; height: 50px;
-    border: 2px solid #3ec6b8;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99999;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.2);
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #3ec6b8;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2);
+  box-shadow: 0 0 15px rgba(62, 198, 184, 0.8), inset 0 0 10px rgba(62, 198, 184, 0.4);
 }
 
-.expandir-cursor { animation: expandirSuave 0.8s forwards; }
+.expandir-cursor {
+  animation: expandirSuave 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
 
 @keyframes expandirSuave {
-    0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
-    30% { opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+  0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
 }
 
 .topbar {
-    display: flex; justify-content: center; padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
 }
 
-.logo img { height: 50px; filter: drop-shadow(0 0 10px rgba(62, 198, 184, 0.6)); }
+.logo img {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 0 10px rgba(62, 198, 184, 0.6));
+}
 
 .hero {
-    min-height: 100vh; display: flex; flex-direction: column;
-    justify-content: center; align-items: center; text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .hero h1 {
-    font-family: 'LemonMilk', sans-serif; font-size: 2.1rem;
-    color: #fff; text-transform: uppercase; letter-spacing: 2px;
+  font-family: 'LemonMilk', sans-serif;
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  filter: drop-shadow(0 0 10px rgba(62, 198, 184, 0.3));
 }
+
+.hero p { color: #888; margin-bottom: 25px; }
 
 .primary {
-    background: #fff; color: #000; border: none; padding: 12px 30px;
-    font-weight: bold; border-radius: 8px; cursor: pointer;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 12px 30px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.2s;
 }
 
-.primary:active { transform: scale(0.9); }
+.primary:active { transform: scale(0.90); }
 
-.grid { display: grid; gap: 15px; padding: 20px; }
+.divisor {
+  width: 100%;
+  height: 100px;
+  background: url('img/divisor-icon.png') no-repeat center;
+  background-size: contain;
+  margin: 40px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  padding: 20px;
+}
 
 .card {
-    position: relative;
-    background: transparent !important;
-    padding: 20px;
-    border-radius: 20px;
-    border: 1px solid rgba(62, 198, 184, 0.3);
-    display: flex; flex-direction: column; align-items: center;
-    overflow: hidden;
-    transition: transform 0.2s, background 0.2s;
+  position: relative;
+  background: transparent !important;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(62, 198, 184, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  transition: transform 0.1s ease;
 }
 
-.card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    backdrop-filter: blur(40px) saturate(150%);
-    -webkit-backdrop-filter: blur(40px) saturate(150%);
-    z-index: -1;
+.card:active {
+  transform: scale(0.90);
 }
 
-.card.pressionado {
-    transform: scale(0.92) !important;
-    background: rgba(62, 198, 184, 0.2) !important;
+.card-icon { width: 60px; height: 60px; margin-bottom: 15px; }
+
+.proibido {
+  user-select: none !important;
+  pointer-events: none !important;
+}
+
+.efeito-entrada {
+  animation: entradaSimples 0.4s ease-out forwards;
+}
+
+@keyframes entradaSimples {
+  0% { opacity: 0; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 .modal-overlay {
-    position: fixed; top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: #000000; /* Preto Absoluto */
-    display: none; justify-content: center; align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
-    background: transparent !important;
-    width: 90%; max-width: 500px; max-height: 85vh;
-    border: 1px solid rgba(62, 198, 184, 0.4);
-    border-radius: 25px; padding: 25px; overflow-y: auto;
+  position: relative;
+  background: #000000 !important;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  overflow-y: auto;
 }
 
-.modal-content::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px);
-    z-index: -1;
+.anima-conteudo {
+  animation: fadeBlurIn 8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeBlurIn {
+  0% { opacity: 0; filter: blur(30px); transform: scale(1.05); }
+  100% { opacity: 1; filter: blur(0px); transform: scale(1); }
 }
 
 .btn-download {
-    display: block; background: #3ec6b8; color: #000;
-    text-align: center; padding: 12px; border-radius: 10px;
-    text-decoration: none; font-weight: bold; margin: 20px 0;
+  display: block;
+  background: #3ec6b8;
+  color: #000;
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 20px 0;
 }
 
-.step-video { width: 100%; border-radius: 12px; background: #000; margin: 10px 0; }
+.btn-download:active { transform: scale(0.90); }
+
+.step-video { width: 100%; border-radius: 12px; background: #000; }
 
 .btn-fechar {
-    position: absolute; top: 15px; right: 15px;
-    background: none; border: none; color: #3ec6b8; font-size: 1.8rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #3ec6b8;
+  font-size: 2.5rem;
+  z-index: 100;
 }
 
 .config-box {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 15px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 15px 0;
 }
 
-.efeito-entrada { animation: entradaSimples 0.4s ease-out forwards; }
+.poeira-cosmica {
+  position: fixed;
+  background-color: #3ec6b8;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+}
 
-@keyframes entradaSimples {
-    0% { opacity: 0; transform: scale(0.95); filter: blur(10px); }
-    100% { opacity: 1; transform: scale(1); filter: blur(0); }
+@keyframes cairEsumir {
+  0% { transform: translate(0, 0) scale(1.5); opacity: 1; }
+  100% { transform: translate(var(--x), calc(var(--y) + 100px)) scale(0); opacity: 0; }
+}
+
+@keyframes brilharSuave {
+  0% { transform: translate(0, 0) scale(0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translate(var(--x), var(--y)) scale(1.5); opacity: 0; }
 }
