@@ -276,33 +276,34 @@
     bgMusic.play().catch(() => {});
 
     setTimeout(() => {
-  hero.style.display = 'none';
-  
-  topbar.style.display = 'flex';
-  divisor.style.display = 'block';
-  deviceInfo.style.display = 'block';
-  cards.style.display = 'grid';
-  muteBtn.style.display = 'flex';
+      hero.style.display = 'none';
+      
+      topbar.style.display = 'flex';
+      divisor.style.display = 'block';
+      deviceInfo.style.display = 'block';
+      cards.style.display = 'grid';
+      muteBtn.style.display = 'flex';
 
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      topbar.style.opacity = "1";
-      divisor.style.opacity = "1";
-      deviceInfo.style.opacity = "1";
-      cards.style.opacity = "1";
-      
-      topbar.classList.add('efeito-entrada');
-      divisor.classList.add('efeito-entrada');
-      deviceInfo.classList.add('efeito-entrada');
-      cards.classList.add('efeito-entrada');
-      
-      const cardElements = document.querySelectorAll('.card');
-      cardElements.forEach(card => card.classList.add('efeito-entrada'));
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 50);
-  });
-}, 500);
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          topbar.style.opacity = "1";
+          divisor.style.opacity = "1";
+          deviceInfo.style.opacity = "1";
+          cards.style.opacity = "1";
+          
+          topbar.classList.add('efeito-entrada');
+          divisor.classList.add('efeito-entrada');
+          deviceInfo.classList.add('efeito-entrada');
+          cards.classList.add('efeito-entrada');
+          
+          const cardElements = document.querySelectorAll('.card');
+          cardElements.forEach(card => card.classList.add('efeito-entrada'));
+          
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 50);
+      });
+    }, 500);
+  }
 
   btn.addEventListener('click', () => {
     sessionStorage.setItem('guiaAberto', 'true');
@@ -310,10 +311,10 @@
   });
 
   function abrirModal(id) {
-  setTimeout(() => {
-    document.getElementById(id).style.display = 'flex';
-  }, 100);
-}
+    setTimeout(() => {
+      document.getElementById(id).style.display = 'flex';
+    }, 100);
+  }
 
   function fecharModal(id) {
     const modal = document.getElementById(id);
