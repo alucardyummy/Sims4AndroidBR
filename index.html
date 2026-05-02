@@ -284,21 +284,22 @@ pointer-events: none;
     transicaoSuave();  
   });  
   
-  function abrirModal(id, element) {  
-    if (element) {  
-      element.style.transform = 'scale(0.92)';  
-      element.style.transition = 'transform 0.1s ease-in';  
-        
-      setTimeout(() => {  
-        element.style.transform = '';  
-        const modal = document.getElementById(id);  
-        modal.style.display = 'flex';  
-        modal.style.animation = 'fadeBlurModal 2s ease forwards';  
-      }, 1000);  
-    } else {  
-      document.getElementById(id).style.display = 'flex';  
-    }  
-  }  
+  function abrirModal(id, element) {
+  if (element) {
+    element.style.transform = 'scale(0.92)';
+    
+    setTimeout(() => {    
+      element.style.transform = '';    
+      const modal = document.getElementById(id);    
+      modal.style.display = 'flex';    
+      modal.style.animation = 'none';
+      modal.offsetHeight;
+      modal.style.animation = 'fadeBlurModal 0.15s ease-out forwards'; 
+    }, 50);    
+  } else {    
+    document.getElementById(id).style.display = 'flex';    
+  }
+} 
   
   function fecharModal(id) {  
     const modal = document.getElementById(id);  
