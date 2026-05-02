@@ -8,8 +8,8 @@
   <style>
     .fade-out {
       opacity: 0;
-      filter: blur(20px);
-      transition: opacity 0.5s ease, filter 0.5s ease;
+      filter: blur(40px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       pointer-events: none;
     }
   </style>
@@ -302,7 +302,7 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 50);
       });
-    }, 500);
+    }, 800);
   }
 
   btn.addEventListener('click', () => {
@@ -311,23 +311,14 @@
   });
 
   function abrirModal(id) {
-    const modal = document.getElementById(id);
-    modal.style.display = 'flex';
-    modal.style.opacity = '1';
-    modal.style.filter = 'blur(0px)';
+    document.getElementById(id).style.display = 'flex';
   }
 
   function fecharModal(id) {
     const modal = document.getElementById(id);
-    modal.style.transition = 'opacity 0.4s ease, filter 0.4s ease';
-    modal.style.opacity = '0';
-    modal.style.filter = 'blur(10px)';
-    
-    setTimeout(() => {
-      modal.style.display = 'none';
-      const videos = modal.querySelectorAll('video');
-      videos.forEach(v => v.pause());
-    }, 400);
+    modal.style.display = 'none';
+    const videos = modal.querySelectorAll('video');
+    videos.forEach(v => v.pause());
   }
 
   function criarPoeiraCosmica(posX, posY, explosao = true) {
@@ -347,7 +338,7 @@
         const raio = 25;
         forcaH = Math.cos(angulo) * raio;
         forcaV = Math.sin(angulo) * raio;
-        particula.style.animation = 'brilharSuave 0.4s ease-out forwards';
+        particula.style.animation = 'brilharSuave 0.8s ease-out forwards';
       } else {
         forcaH = (Math.random() - 0.5) * 120;
         forcaV = (Math.random() * -80) - 10;
@@ -362,7 +353,7 @@
       particula.style.height = tamanho;
 
       document.body.appendChild(particula);
-      setTimeout(() => particula.remove(), explosao ? 400 : 600);
+      setTimeout(() => particula.remove(), explosao ? 800 : 600);
     }
   }
 
@@ -373,19 +364,14 @@
 
     cursor.style.left = `${x}px`;
     cursor.style.top = `${y}px`;
-    cursor.style.transform = `translate(-50%, -50%) scale(0.2)`;
     
-    requestAnimationFrame(() => {
-        cursor.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s';
-        cursor.style.transform = `translate(-50%, -50%) scale(1)`;
-        cursor.style.opacity = "1";
-    });
-
     if (mostrarBolinha) {
-      setTimeout(() => { cursor.style.opacity = "0"; }, 250);
+      cursor.classList.remove('expandir-cursor');
+      void cursor.offsetWidth; 
+      cursor.classList.add('expandir-cursor');
       criarPoeiraCosmica(x, y, true);
     } else {
-      setTimeout(() => { cursor.style.opacity = "0"; }, 250);
+      cursor.style.opacity = "0";
       criarPoeiraCosmica(x, y, false);
     }
   };
