@@ -311,7 +311,9 @@
   });
 
   function abrirModal(id) {
-    document.getElementById(id).style.display = 'flex';
+    setTimeout(() => {
+      document.getElementById(id).style.display = 'flex';
+    }, 200);
   }
 
   function fecharModal(id) {
@@ -389,4 +391,4 @@
 </script>
 
 </body>
-</html> 
+</html>
