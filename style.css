@@ -9,6 +9,9 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+overscroll-behavior: none;
   background-color: #0a0a0a;
 }
 
@@ -16,7 +19,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: 'Space Grotesk', sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -419,4 +422,4 @@ video::-webkit-media-controls-panel { width: calc(100% + 30px); }
 .modal-content::-webkit-scrollbar-thumb {
   background: #3ec6b8;
   border-radius: 10px;
-} 
+}
