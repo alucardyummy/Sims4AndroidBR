@@ -209,6 +209,12 @@ border-color: rgba(62, 198, 184, 0.6);
 transform: translateY(-8px);
 }
 
+.card:active {
+    transform: scale(0.94) !important;
+    background: rgba(62, 198, 184, 0.2) !important;
+    transition: transform 0.05s ease-in !important;
+}
+
 .card:active .card-icon {
     filter: drop-shadow(0 0 15px rgba(62, 198, 184, 1));
 }
