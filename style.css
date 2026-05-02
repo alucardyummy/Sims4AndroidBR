@@ -392,14 +392,17 @@ margin-bottom: 10px;
 filter: drop-shadow(0 0 8px rgba(62, 198, 184, 0.5));
 }
 
-.btn-fechar, 
-#mute-control,
-.btn-fechar *, 
-#mute-control * {
+.btn-fechar {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    color: #3ec6b8 !important;
+    background: none !important;
+    border: none !important;
+    font-size: 1.8rem !important;
+    cursor: pointer !important;
+    z-index: 100 !important;
     -webkit-tap-highlight-color: transparent !important;
-    -webkit-touch-callout: none !important;
-    outline: none !important;
-    box-shadow: none !important;
 }
 
 .btn-fechar:active, 
@@ -472,12 +475,12 @@ border-radius: 10px;
 #mute-control {
     -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
     -webkit-tap-highlight-color: transparent !important;
-    user-select: none !important;
-    -webkit-user-select: none !important;
     outline: none !important;
-    -webkit-focus-ring-color: transparent !important;
+    box-shadow: none !important;
+    user-select: none !important;
 }
 
-#mute-control * {
-    pointer-events: none !important;
+#mute-control, #mute-control * {
+    -webkit-focus-ring-color: transparent !important;
+    -webkit-touch-callout: none !important;
 }
