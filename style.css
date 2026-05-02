@@ -209,17 +209,17 @@ border-color: rgba(62, 198, 184, 0.6);
 transform: translateY(-8px);
 }
 
-.card:active {
-    transform: scale(0.92) !important;
-    background: rgba(62, 198, 184, 0.2) !important;
-    transition: transform 0.02s ease-in !important;
+.card:active .card-icon {
+    filter: drop-shadow(0 0 15px rgba(62, 198, 184, 1));
 }
 
 .card-icon {
-width: 60px;
-height: 60px;
-object-fit: contain;
-margin-bottom: 15px;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 8px rgba(62, 198, 184, 0.6)); 
+    transition: filter 0.3s ease;
 }
 
 .sua-caixa {
@@ -493,8 +493,6 @@ border-radius: 10px;
 
 .card-icon[src*="img/mimi.gif"],
 .card-icon[src*="img/conteiner-wow.png"] {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 12px rgba(62, 198, 184, 0.7));
+    width: 50px; 
+    height: 50px;
 }
