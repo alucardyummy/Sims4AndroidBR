@@ -6,12 +6,12 @@
   <title>Sims4AndroidBR</title>
   <link rel="stylesheet" href="style.css">
   <style>
-  .fade-out {
-    opacity: 0;
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-  }
-</style>
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+  </style>
  <link rel="icon" type="image/png" href="img/BRsims-fav.png">
 </head>
 <body>
@@ -243,7 +243,7 @@
   </div>
 </div>
 
- <script>
+<script>
   const btn = document.getElementById('btn-comecar');
   const cards = document.getElementById('guia-cards');
   const divisor = document.getElementById('meu-divisor');
@@ -261,12 +261,23 @@
   muteBtn.style.cssText = 'position:fixed; bottom:20px; right:20px; background:rgba(0,0,0,0.6); border:1px solid #3ec6b8; border-radius:50%; width:40px; height:40px; z-index:2000; display:none; cursor:pointer; display: flex; justify-content: center; align-items: center; transition: 0.3s; background-image: url("mandiueni.gif"); background-size: 80%; background-repeat: no-repeat; background-position: center;';
   document.body.appendChild(muteBtn);
 
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      bgMusic.pause();
+    } else {
+      if (sessionStorage.getItem('guiaAberto') === 'true' && !bgMusic.muted) {
+        bgMusic.play().catch(() => {});
+      }
+    }
+  });
+
   function transicaoSuave() {
     hero.classList.add('fade-out');
     bgMusic.play().catch(() => {});
 
     setTimeout(() => {
       hero.style.display = 'none';
+      
       topbar.style.display = 'flex';
       divisor.style.display = 'block';
       deviceInfo.style.display = 'block';
@@ -285,6 +296,9 @@
           deviceInfo.classList.add('efeito-entrada');
           cards.classList.add('efeito-entrada');
           
+          const cardElements = document.querySelectorAll('.card');
+          cardElements.forEach(card => card.classList.add('efeito-entrada'));
+          
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 50);
       });
@@ -292,22 +306,12 @@
   }
 
   btn.addEventListener('click', () => {
-    setTimeout(() => {
-      sessionStorage.setItem('guiaAberto', 'true');
-      transicaoSuave();
-    }, 100); 
+    sessionStorage.setItem('guiaAberto', 'true');
+    transicaoSuave();
   });
 
   function abrirModal(id) {
-    const modal = document.getElementById(id);
-    const content = modal.querySelector('.modal-content');
-    
-    modal.style.display = 'flex';
-    content.scrollTop = 0;
-    
-    content.classList.remove('efeito-entrada');
-    void content.offsetWidth; 
-    content.classList.add('efeito-entrada');
+    document.getElementById(id).style.display = 'flex';
   }
 
   function fecharModal(id) {
@@ -319,12 +323,16 @@
 
   function criarPoeiraCosmica(posX, posY, explosao = true) {
     const qtd = explosao ? 12 : 25;
+
     for (let i = 0; i < qtd; i++) {
       const particula = document.createElement('div');
       particula.classList.add('poeira-cosmica');
+      
       particula.style.left = posX + 'px';
       particula.style.top = posY + 'px';
+      
       let forcaH, forcaV;
+      
       if (explosao) {
         const angulo = Math.random() * Math.PI * 2;
         const raio = 25;
@@ -336,11 +344,14 @@
         forcaV = (Math.random() * -80) - 10;
         particula.style.animation = 'cairEsumir 0.6s cubic-bezier(0.1, 0.5, 0.5, 1) forwards';
       }
+      
       particula.style.setProperty('--x', `${forcaH}px`);
       particula.style.setProperty('--y', `${forcaV}px`);
+      
       const tamanho = (Math.random() * 1.5 + 0.3) + 'px';
       particula.style.width = tamanho;
       particula.style.height = tamanho;
+
       document.body.appendChild(particula);
       setTimeout(() => particula.remove(), explosao ? 800 : 600);
     }
@@ -349,10 +360,12 @@
   const handleDown = (e) => {
     const x = e.touches ? e.touches[0].clientX : e.clientX;
     const y = e.touches ? e.touches[0].clientY : e.clientY;
+    const mostrarBolinha = Math.random() > 0.5;
+
     cursor.style.left = `${x}px`;
     cursor.style.top = `${y}px`;
     
-    if (Math.random() > 0.5) {
+    if (mostrarBolinha) {
       cursor.classList.remove('expandir-cursor');
       void cursor.offsetWidth; 
       cursor.classList.add('expandir-cursor');
@@ -373,7 +386,7 @@
     muteBtn.classList.add('clicado');
     setTimeout(() => muteBtn.classList.remove('clicado'), 100);
   });
- </script>
+</script>
 
 </body>
 </html>
