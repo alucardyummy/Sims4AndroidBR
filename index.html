@@ -243,7 +243,7 @@
   </div>
 </div>
 
-<script>
+ <script>
   const btn = document.getElementById('btn-comecar');
   const cards = document.getElementById('guia-cards');
   const divisor = document.getElementById('meu-divisor');
@@ -260,16 +260,6 @@
   muteBtn.id = 'mute-control';
   muteBtn.style.cssText = 'position:fixed; bottom:20px; right:20px; background:rgba(0,0,0,0.6); border:1px solid #3ec6b8; border-radius:50%; width:40px; height:40px; z-index:2000; display:none; cursor:pointer; display: flex; justify-content: center; align-items: center; transition: 0.3s; background-image: url("mandiueni.gif"); background-size: 80%; background-repeat: no-repeat; background-position: center;';
   document.body.appendChild(muteBtn);
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      bgMusic.pause();
-    } else {
-      if (sessionStorage.getItem('guiaAberto') === 'true' && !bgMusic.muted) {
-        bgMusic.play().catch(() => {});
-      }
-    }
-  });
 
   function transicaoSuave() {
     hero.classList.add('fade-out');
@@ -295,9 +285,6 @@
           deviceInfo.classList.add('efeito-entrada');
           cards.classList.add('efeito-entrada');
           
-          const cardElements = document.querySelectorAll('.card');
-          cardElements.forEach(card => card.classList.add('efeito-entrada'));
-          
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 50);
       });
@@ -305,8 +292,10 @@
   }
 
   btn.addEventListener('click', () => {
-    sessionStorage.setItem('guiaAberto', 'true');
-    transicaoSuave();
+    setTimeout(() => {
+      sessionStorage.setItem('guiaAberto', 'true');
+      transicaoSuave();
+    }, 100); 
   });
 
   function abrirModal(id) {
@@ -314,9 +303,8 @@
     const content = modal.querySelector('.modal-content');
     
     modal.style.display = 'flex';
-    content.scrollTop = 0; // Garante que o modal abra no topo do texto
+    content.scrollTop = 0;
     
-    // Remove e adiciona a animação para resetar o efeito blur
     content.classList.remove('efeito-entrada');
     void content.offsetWidth; 
     content.classList.add('efeito-entrada');
@@ -361,10 +349,10 @@
   const handleDown = (e) => {
     const x = e.touches ? e.touches[0].clientX : e.clientX;
     const y = e.touches ? e.touches[0].clientY : e.clientY;
-    const mostrarBolinha = Math.random() > 0.5;
     cursor.style.left = `${x}px`;
     cursor.style.top = `${y}px`;
-    if (mostrarBolinha) {
+    
+    if (Math.random() > 0.5) {
       cursor.classList.remove('expandir-cursor');
       void cursor.offsetWidth; 
       cursor.classList.add('expandir-cursor');
@@ -385,7 +373,7 @@
     muteBtn.classList.add('clicado');
     setTimeout(() => muteBtn.classList.remove('clicado'), 100);
   });
-</script>
+ </script>
 
 </body>
 </html>
