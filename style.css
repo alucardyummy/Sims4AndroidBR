@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
 
 @font-face {
   font-family: 'LemonMilk';
@@ -39,8 +39,30 @@ body {
   z-index: 99999;
   backdrop-filter: blur(2px);
   opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2);
   will-change: transform, opacity;
-  transform: translate(-50%, -50%) scale(0);
+}
+
+@keyframes crescerESumir {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.animar-cursor {
+  animation: crescerESumir 0.5s ease-out forwards;
 }
 
 .topbar {
@@ -122,7 +144,7 @@ body {
 }
 
 .primary:active {
-  transform: scale(0.95);
+  transform: scale(0.90);
 }
 
 .divisor {
@@ -169,7 +191,7 @@ body {
 }
 
 .card:active {
-  transform: scale(0.95);
+  transform: scale(0.92);
   background: rgba(62, 198, 184, 0.1);
 }
 
@@ -188,12 +210,12 @@ body {
 }
 
 @keyframes entradaBlur {
-  0% { filter: blur(10px); opacity: 0; transform: scale(0.98); }
+  0% { filter: blur(15px); opacity: 0; transform: scale(0.98); }
   100% { filter: blur(0px); opacity: 1; transform: scale(1); }
 }
 
 .efeito-entrada {
-  animation: entradaBlur 0.3s ease-out forwards;
+  animation: entradaBlur 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .poeira-cosmica {
@@ -222,7 +244,7 @@ body {
     transform: translate(0, 0) scale(0);
     opacity: 0;
   }
-  50% {
+  40% {
     opacity: 1;
   }
   100% {
@@ -252,8 +274,6 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
 .modal-content {
@@ -285,7 +305,7 @@ body {
 }
 
 .btn-download:active {
-  transform: scale(0.95);
+  transform: scale(0.92);
   opacity: 0.9;
 }
 
@@ -323,10 +343,6 @@ video::-webkit-media-controls-panel { width: calc(100% + 30px); }
   line-height: 1;
 }
 
-.btn-fechar:active {
-  transform: scale(0.8);
-}
-
 .config-box {
   background: rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(40px) brightness(1.2);
@@ -338,6 +354,11 @@ video::-webkit-media-controls-panel { width: calc(100% + 30px); }
   margin: 15px 0;
   
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+}
+
+.config-box:active {
+  transform: scale(0.96);
 }
 
 .config-box p {
@@ -372,4 +393,4 @@ video::-webkit-media-controls-panel { width: calc(100% + 30px); }
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
-}
+} 
