@@ -150,31 +150,32 @@ body {
   padding: 20px;
 }
 
-.card {
+ .card {
   position: relative;
-  background: rgba(25, 25, 25, 0.4);
+  background: rgba(255, 255, 255, 0.03) !important;
   padding: 20px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15); 
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  transition: transform 0.15s ease-out, background 0.3s ease;
+  border: 1px solid rgba(62, 198, 184, 0.3); 
+  transition: transform 0.15s ease-out;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
   overflow: hidden;
-  transform: translateZ(0);
-}
+ }
 
-.card::before {
+ .card::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background: transparent;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   z-index: -1;
-}
+} 
 
 .card:hover {
   background: rgba(62, 198, 184, 0.15);
@@ -205,8 +206,13 @@ body {
   100% { opacity: 1; transform: scale(1); }
 }
 
-.efeito-entrada {
-  animation: entradaBlur 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+ .efeito-entrada {
+  animation: entradaSimples 0.4s ease-out forwards;
+}
+
+@keyframes entradaSimples {
+  0% { opacity: 0; transform: scale(0.98) translate3d(0,0,0); }
+  100% { opacity: 1; transform: scale(1) translate3d(0,0,0); }
 }
 
 .poeira-cosmica {
@@ -265,28 +271,29 @@ body {
     z-index: 1000;
 }
 
-.modal-content {
+ .modal-content {
     position: relative;
-    background: rgba(20, 20, 20, 0.6);
+    background: rgba(10, 10, 10, 0.1) !important; /* Quase transparente */
     width: 90%;
     max-width: 500px;
     max-height: 80vh;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(62, 198, 184, 0.4);
     border-radius: 25px;
     padding: 25px;
     overflow-y: auto;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
-    transform: translateZ(0);
-}
+    
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+ }
 
-.modal-content::before {
+ .modal-content::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    backdrop-filter: blur(30px) saturate(150%);
-    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    backdrop-filter: blur(35px) saturate(200%);
+    -webkit-backdrop-filter: blur(35px) saturate(200%);
     z-index: -1;
-}
+ }
 
 .btn-download {
     display: block;
