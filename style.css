@@ -174,39 +174,34 @@ gap: 15px;
 padding: 20px;
 }
 
- .card {
+.card {
     position: relative;
-background: transparent !important;
-padding: 20px;
-border-radius: 20px;
-border: 1px solid rgba(62, 198, 184, 0.3);
-transition: transform 0.15s ease-out;
-display: flex;
-flex-direction: column;
-align-items: center;
-cursor: pointer;
-
-transform: translate3d(0, 0, 0);
-will-change: transform, opacity;
-overflow: hidden; 
+    background: rgba(255, 255, 255, 0.1) !important; 
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    transition: all 0.15s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
     -webkit-tap-highlight-color: transparent;
-    transition: transform 0.1s ease-out;
  }
 
 .card::before {
-content: "";
-position: absolute;
-top: 0; left: 0; right: 0; bottom: 0;
-background: transparent;
-backdrop-filter: blur(40px);
--webkit-backdrop-filter: blur(40px);
-z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    z-index: -1;
 }
 
 .card:hover {
-background: rgba(62, 198, 184, 0.15);
-border-color: rgba(62, 198, 184, 0.6);
-transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-8px);
 }
 
 .card:active {
