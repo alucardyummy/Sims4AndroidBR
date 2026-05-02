@@ -468,3 +468,16 @@ border-radius: 10px;
     -webkit-backdrop-filter: blur(15px); 
   }
 }
+
+#mute-control {
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+    -webkit-tap-highlight-color: transparent !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    outline: none !important;
+    -webkit-focus-ring-color: transparent !important;
+}
+
+#mute-control * {
+    pointer-events: none !important;
+}
