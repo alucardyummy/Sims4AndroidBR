@@ -176,25 +176,26 @@ padding: 20px;
 
 .card {
     position: relative;
-    background: rgba(255, 255, 255, 0.1) !important; 
+    background: rgba(255, 255, 255, 0.18) !important; 
     padding: 20px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    transition: all 0.15s ease-out;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    transition: transform 0.15s ease-out, background 0.2s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    overflow: hidden;
+    overflow: hidden; 
     -webkit-tap-highlight-color: transparent;
- }
+}
 
 .card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    background: rgba(255, 255, 255, 0.05);
     z-index: -1;
 }
 
@@ -206,7 +207,7 @@ padding: 20px;
 
 .card:active {
     transform: scale(0.94) !important;
-    background: rgba(62, 198, 184, 0.2) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
     transition: transform 0.05s ease-in !important;
 }
 
