@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sims4AndroidBR</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/BRsims-fav.png">
 </head>
 <body>
     <div id="custom-cursor"></div>
@@ -32,52 +33,58 @@
                 <p><b>Modelo:</b> Redmi Note 13 Pro 5G</p>
                 <p><b>Processador:</b> MediaTek Dimensity 7200 Ultra</p>
                 <p><b>RAM:</b> 12,0+6,0 GB</p>
-                <img src="nhaw.gif" class="proibido" style="width: 100%; margin-top: 15px; border-radius: 8px;">
+                <img src="nhaw.gif" class="proibido" style="width: 100%; margin-top: 15px; border-radius: 8px; border: 1px solid rgba(62, 198, 184, 0.4); box-shadow: 0 0 15px rgba(62, 198, 184, 0.5);">
             </div>
         </section>
 
         <section class="grid" id="guia-cards" style="display: none; opacity: 0;">
-            <div class="card" onclick="abrirModal('modal-download', this)">
-                <div class="card-glass"></div>
-                <img src="img/download-icon.png" class="card-icon proibido">
-                <h3>Download</h3>
-                <p>Baixar jogo + apps necessários</p>
-            </div>
+    <div class="card" onclick="abrirModal('modal-download', this)">
+        <div class="card-glass"></div>
+        <div class="card-glow"></div>
+        <img src="img/download-icon.png" class="card-icon proibido">
+        <h3>Download</h3>
+        <p>Baixar jogo + apps necessários</p>
+    </div>
 
-            <div class="card" onclick="abrirModal('modal-instalacao', this)">
-                <div class="card-glass"></div>
-                <img src="img/instalacao-icon.png" class="card-icon proibido">
-                <h3>Instalação</h3>
-                <p>Configurar GameHub corretamente</p>
-            </div>
+    <div class="card" onclick="abrirModal('modal-instalacao', this)">
+        <div class="card-glass"></div>
+        <div class="card-glow"></div>
+        <img src="img/instalacao-icon.png" class="card-icon proibido">
+        <h3>Instalação</h3>
+        <p>Configurar GameHub corretamente</p>
+    </div>
 
-            <div class="card" onclick="abrirModal('modal-configuracao', this)">
-                <div class="card-glass"></div>
-                <img src="img/problemas-icon.png" class="card-icon proibido">
-                <h3>Configuração</h3>
-                <p>Ajustes de Wine e GPU para mais FPS</p>
-            </div>
+    <div class="card" onclick="abrirModal('modal-configuracao', this)">
+        <div class="card-glass"></div>
+        <div class="card-glow"></div>
+        <img src="img/problemas-icon.png" class="card-icon proibido">
+        <h3>Configuração</h3>
+        <p>Ajustes de Wine e GPU para mais FPS</p>
+    </div>
 
-            <div class="card" onclick="abrirModal('modal-mods', this)">
-                <div class="card-glass"></div>
-                <img src="img/mods-icon.png" class="card-icon proibido">
-                <h3>Mods</h3>
-                <p>Como instalar WickedWhims e CC</p>
-            </div>
+    <div class="card" onclick="abrirModal('modal-mods', this)">
+        <div class="card-glass"></div>
+        <div class="card-glow"></div>
+        <img src="img/mods-icon.png" class="card-icon proibido">
+        <h3>Mods</h3>
+        <p>Como instalar WickedWhims e CC</p>
+    </div>
 
-            <div class="card" onclick="abrirModal('modal-traducoes', this)">
-                <div class="card-glass"></div>
-                <img src="img/mimi.gif" class="card-icon proibido">
-                <h3>Tradução TS4</h3>
-                <p>Jogo e Mods totalmente em Português</p>
-            </div>
+    <div class="card" onclick="abrirModal('modal-traducoes', this)">
+        <div class="card-glass"></div>
+        <div class="card-glow"></div>
+        <img src="img/mimi.gif" class="card-icon proibido">
+        <h3>Tradução TS4</h3>
+        <p>Jogo e Mods totalmente em Português</p>
+    </div>
 
-            <div class="card" onclick="abrirModal('modal-contêiner', this)">
-                <div class="card-glass"></div>
-                <img src="img/conteiner-wow.png" class="card-icon proibido">
-                <h3>Contêiner & Arquivos</h3>
-                <p>Interface do Windows e arquivos</p>
-            </div>
+    <div class="card" onclick="abrirModal('modal-contêiner', this)">
+        <div class="card-glass"></div>
+        <div class="card-glow"></div>
+        <img src="img/conteiner-wow.png" class="card-icon proibido">
+        <h3>Contêiner & Arquivos</h3>
+        <p>Interface do Windows e arquivos</p>
+    </div>
         </section>
     </main>
 
@@ -85,9 +92,21 @@
         <div class="modal-content efeito-entrada">
             <button onclick="fecharModal('modal-download')" class="btn-fechar">×</button>
             <h2 style="color:#3ec6b8">Download & Apps</h2>
-            <p>1. Acesse o site Knysims e escolha a versão Deluxe.</p>
-            <video class="step-video" controls><source src="video/KnySims+1DM.mp4" type="video/mp4"></video>
+            <p style="background: rgba(62, 198, 184, 0.1); padding: 10px; border-radius: 8px; font-size: 0.9rem; border: 1px solid rgba(62, 198, 184, 0.3); color: #3ec6b8; margin-bottom: 15px;">
+                <b>Dica contra anúncios:</b> Ative o DNS Privado <b>dns.adguard.com</b> nas configurações do seu celular antes de prosseguir com o download.
+            </p>
+            <h3>Onde baixar o jogo:</h3>
+            <p>Acesse o site <b>Knysims</b>, use a lupa para pesquisar por "Deluxe" e escolha a versão desejada. No modo de download, escolha "Mediafire".</p>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/KnySims+1DM.mp4" type="video/mp4"></video>
             <a href="https://knysims.com.br/" target="_blank" class="btn-download">Acessar Knysims</a>
+            <p style="font-size: 0.85rem; color: #888;"><i>Ao ser redirecionado para o Loadifly, clique em "Fechar Propaganda". Quando o celular perguntar "Selecionar atividade", escolha o 1DM.</i></p>
+            <div class="divisor" style="height: 40px;"></div>
+            <h3>Apps necessários:</h3>
+            <p>Instale o 1DM para gerenciar o download do jogo base sem erros.</p>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/1DM-demonstrativo.mp4" type="video/mp4"></video>
+            <a href="https://play.google.com/store/apps/details?id=idm.internet.download.manager" target="_blank" class="btn-download">Baixar 1DM</a>
+            <p>O <b>Cx Explorador</b> é ótimo para organizar seus mods na memória do Android antes de movê-los. (Esse aplicativo é opcional, você não precisa dele caso se sinta mais confortável usando o ZArchiver)</p>
+            <a href="https://play.google.com/store/apps/details?id=com.cxinventor.file.explorer" target="_blank" class="btn-download">Baixar Cx Explorador</a>
         </div>
     </div>
 
@@ -95,8 +114,18 @@
         <div class="modal-content efeito-entrada">
             <button onclick="fecharModal('modal-instalacao')" class="btn-fechar">×</button>
             <h2 style="color:#3ec6b8">Instalação</h2>
-            <p>Extraia o jogo e importe o .exe no GameHub.</p>
-            <video class="step-video" controls><source src="video/GAMEHUB-demonstrativo.mp4" type="video/mp4"></video>
+            <p>1. Use o <b>ZArchiver</b> para extrair o .zip na pasta Downloads.</p>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/ExtracaoTutorial-demonstrativo.mp4" type="video/mp4"></video>
+            <a href="https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver" target="_blank" class="btn-download">Baixar ZArchiver</a>
+            <p>2. Instale o emulador <b>GameHub</b>:</p>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/gamehub-tela-de-instalacao.mp4" type="video/mp4"></video>
+            <a href="https://gamehub.xiaoji.com/" target="_blank" class="btn-download">Baixar GameHub Oficial</a>
+            <p>3. Em <b>"Meu"</b> > <b>"Import Games"</b> > <b>"Jogo PC"</b>, selecione o .exe no caminho:</p>
+            <code style="color: #3ec6b8; font-size: 0.75rem; display: block; margin: 15px 0; background: #111; padding: 10px; border-radius: 8px; border: 1px solid rgba(62, 198, 184, 0.2);">D:/The Sims 4 Base Deluxe / The Sims 4 / Game / Bin / TS4_DX9_x64.exe</code>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/GAMEHUB-demonstrativo.mp4" type="video/mp4"></video>
+        <p style="background: rgba(255, 193, 7, 0.1); padding: 10px; border-radius: 8px; font-size: 0.9rem; border: 1px solid #ffc107; color: #ffc107; margin: 15px 0;">
+                <b>PASSO VITAL:</b> Abra o jogo uma vez até o menu principal para gerar a pasta Documents.
+        </p>
         </div>
     </div>
 
@@ -105,10 +134,15 @@
             <button onclick="fecharModal('modal-configuracao')" class="btn-fechar">×</button>
             <h2 style="color:#3ec6b8">Ajustes de FPS</h2>
             <div class="config-box">
-                <p>Resolução: 960x544</p>
-                <p>Wine: wine9.5-x64-2</p>
+                <p><b>Resolução:</b> <span style="color: #3ec6b8;">960x544</span></p>
+                <p><b>Wine:</b> <span style="color: #3ec6b8;">wine9.5-x64-2</span></p>
+                <p><b>DXVK:</b> <span style="color: #3ec6b8;">dxvk-1.7.2</span></p>
+                <p><b>CPU:</b> <span style="color: #3ec6b8;">box64-0.39</span></p>
             </div>
-            <video class="step-video" controls><source src="video/ConfigsInternasGamehub-demonstrativo.mp4" type="video/mp4"></video>
+            <p style="text-align: center;">Configurações no <b>Contêiner</b></p>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/ConfigsInternasGamehub-demonstrativo.mp4" type="video/mp4"></video>
+            <p style="text-align: center;">Menu de deslizar:</p>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/configs-interface-gamehub.mp4" type="video/mp4"></video>
         </div>
     </div>
 
@@ -116,9 +150,43 @@
         <div class="modal-content efeito-entrada">
             <button onclick="fecharModal('modal-mods')" class="btn-fechar">×</button>
             <h2 style="color:#3ec6b8">Mods & WickedWhims</h2>
-            <p>Ative as modificações de script nas opções do jogo.</p>
-            <video class="step-video" controls><source src="video/ColocarMods-demonstrativo.mp4" type="video/mp4"></video>
-            <a href="https://wicked.cc/mods/admin/wickedwhims/#download" target="_blank" class="btn-download">Baixar Wicked</a>
+            <p style="color: #3ec6b8; font-weight: bold;">Ativação Interna:</p>
+            <p>Vá em <b>Opções de Jogo > Outros</b> e ative:</p>
+            <ul style="margin: 10px 20px; font-size: 0.9rem; color: #ccc;">
+                <li>Habilitar Conteúdo Personalizado e Modificações</li>
+                <li>Modificações de Script Permitidas</li>
+            </ul>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/optionsTS4-ativar.mp4" type="video/mp4"></video>
+<code style="display: block; background: #111; padding: 10px; margin: 0 0 20px 0; font-size: 0.8rem; border-radius: 8px;">Isso faz com que, ao entrar no jogo, os mods sejam reconhecidos.</code>
+         <p style="color: #3ec6b8; font-weight: bold;">Onde encontrar Roupas/Cabelos etc (CC):</p>
+            <p style="font-size: 0.9rem;">Para mods de roupas/cabelos/detalhes de skin, pesquise no Pinterest ou no Patreon. Recomendo o Pinterest pra ter uma gama melhor dos conteúdos desejados, normalmente os links linkados em imagens/videos no Pinterest, levam ao Tumblr/Patreon e lá irá ter os arquivos para download. O processo para o ts4 reconhecer os mods é; extrair o arquivo caso venha zipado (.zip) através do ZArchiver e pegar os arquivos .packages e levar até a pasta Mods em <i>Documents/Eletronic Arts/The Sims 4/Mods,</i>assim como no tutorial abaixo.</p>                                                                                                                                                 
+         <p style="display: block; width: 100%; text-align: center; margin: 40px 0 15px 0; font-weight: bold; color: #3ec6b8;">
+    Como Colocar Mods:
+</p>
+
+<video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload">
+    <source src="video/ColocarMods-demonstrativo.mp4" type="video/mp4">
+</video>
+         
+         <div class="divisor" style="height: 40px;"></div>
+         <p style="color: #3ec6b8; font-weight: bold;">Como colocar o WickedWhims no TS4 (18+):</p>
+         <p style="margin-top:15px; font-weight:bold; line-height: 1.4; font-size: 0.85rem; word-break: break-all;">
+    Caminho para onde mandar os arquivos <span style="color:#3ec6b8;">TURBODRIVER_WickedWhims_Scripts.ts4script</span> e <span style="color:#3ec6b8;">TURBODRIVER_WickedWhims_Tuning.package</span>:
+         </p>
+         <code style="display: block; background: #111; padding: 10px; margin: 10px 0; font-size: 0.8rem; border-radius: 8px;">C:/Users/Container/Documents/Electronic Arts/The Sims 4/Mods</code>
+         <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/ComoColocarWickedWhims-demonstrativo.mp4" type="video/mp4"></video>
+            <a href="https://wicked.cc/mods/admin/wickedwhims/#download" target="_blank" class="btn-download" style="background: #eb34e8; color: #fff;">Baixar WickedWhims</a>
+            <p style="margin-top:10px; text-align: center; font-weight: bold;">Tradução Base do WickedWhims:</p>
+         <a href="https://wicked.cc/translations/mutsvki/traducao-pt-br-wickedwhims-v180a-e-v182/" target="_blank" class="btn-download" style="background: #eb34e8; color: #fff;">Baixar Tradução Wicked</a>
+            <p style="color: #888; font-style: italic; font-size: 0.85rem; margin-top: 20px;">
+  <b>Importante:</b><br>
+  Alguns mods do WickedWhims precisam de tradução própria além da "padrão" do mutsvki. Por isso, se ao entrar no TS4 algum mod que você baixar estiver mostrando textos em inglês, você pode corrigir isso buscando a tradução no Google. Normalmente, a tradução vem em formato .zip. Assim como no tutorial acima, é só extrair o arquivo com o ZArchiver e, dentro do conteúdo do TS4, copiar o arquivo .package da tradução e colar na pasta Mods em <i>Documents/Electronic Arts/The Sims 4/Mods</i>.
+            </p>
+         <p style="background: rgba(255, 82, 82, 0.1); padding: 10px; border-radius: 8px; font-size: 0.9rem; border: 1px solid #ff5252; color: #ff5252; margin-top: 15px;">
+                <b>Erro/Bug?</b> Delete o arquivo <b>localthumbcache.package</b> na pasta principal do jogo.
+            </p>
+            <p style="text-align: center; margin-top: 25px;">Demonstração de como limpar o cache do TS4 caso você precise:</p>
+         <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/Erros-BugsCache.mp4" type="video/mp4"></video>
         </div>
     </div>
 
@@ -126,17 +194,24 @@
         <div class="modal-content efeito-entrada">
             <button onclick="fecharModal('modal-traducoes')" class="btn-fechar">×</button>
             <h2 style="color:#3ec6b8">PT-BR • Tradução</h2>
-            <p>Use o Language Changer na pasta do jogo.</p>
-            <video class="step-video" controls><source src="video/TraducaoPomposa.mp4" type="video/mp4"></video>
+            <p><b>Jogo Base:</b> Mova o language-changer para o Drive D: (onde está o <i>TS4_DX9_x64.exe</i></p>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/TraducaoPomposa.mp4" type="video/mp4"></video>
+            <a href="https://www.mediafire.com/file/m7pd9cqpn199m2s/language-changer.exe/file" target="_blank" class="btn-download">Baixar Language Changer</a>
         </div>
     </div>
 
     <div class="modal-overlay" id="modal-contêiner">
         <div class="modal-content efeito-entrada">
             <button onclick="fecharModal('modal-contêiner')" class="btn-fechar">×</button>
-            <h2 style="color:#3ec6b8">Contêiner</h2>
-            <p>Acesse o desktop do Wine para mover arquivos.</p>
-            <img src="img/passo-a-passo-contêiner.png" style="width:100%; border-radius:10px;">
+            <h2 style="color:#3ec6b8">🖥️ Abrir o Contêiner</h2>
+            <div class="config-box">
+                <p>1. Clique nos <b>três pontinhos (...)</b> do jogo.</p>
+                <p>2. Selecione <b>"Config. jogos PC"</b>.</p>
+                <p>3. Clique em <b>"Abrir desktop do contêiner"</b>.</p>
+            </div>
+            <img src="img/passo-a-passo-contêiner.png" class="proibido" draggable="false" style="width:100%; border-radius:10px; border: 1px solid rgba(62, 198, 184, 0.3);">
+            <p style="text-align: center; margin-top: 15px;">Como selecionar vários arquivos e copiar (isso facilita o envio de .packages para a pasta Mods depois):</p>
+            <video class="step-video" controls playsinline disablePictureInPicture controlsList="nodownload"><source src="video/SELECIONAR-ARQUIVOS-demonstrativo.mp4" type="video/mp4"></video>
         </div>
     </div>
 
@@ -155,7 +230,7 @@
 
         const muteBtn = document.createElement('button');
         muteBtn.id = 'mute-control';
-        muteBtn.style.cssText = 'position:fixed; bottom:20px; right:20px; background:rgba(0,0,0,0.6); border:1px solid #3ec6b8; border-radius:50%; width:40px; height:40px; z-index:2000; display:none; justify-content:center; align-items:center; background-image: url("mandiueni.gif"); background-size: 80%; background-repeat: no-repeat; background-position: center;';
+        muteBtn.style.cssText = 'position:fixed; bottom:20px; right:20px; background:rgba(0,0,0,0.6); border:1px solid #3ec6b8; border-radius:50%; width:40px; height:40px; z-index:2000; display:none; justify-content:center; align-items:center; background-image: url("mandiueni.gif"); background-size: 80%; background-repeat: no-repeat; background-position: center; transition: 0.3s;';
         document.body.appendChild(muteBtn);
 
         btn.addEventListener('click', () => {
@@ -177,6 +252,16 @@
             }, 500);
         });
 
+     document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            bgMusic.pause();
+        } else {
+            if (hero.style.display === 'none' && !bgMusic.muted) {
+                bgMusic.play().catch(() => {});
+            }
+        }
+    });
+     
         function abrirModal(id, element) {
             const modal = document.getElementById(id);
             modal.style.display = 'flex';
@@ -221,6 +306,12 @@
             bgMusic.muted = !bgMusic.muted;
             muteBtn.style.opacity = bgMusic.muted ? "0.5" : "1";
         });
+
+     document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+    });
+});
     </script>
 </body>
 </html>
