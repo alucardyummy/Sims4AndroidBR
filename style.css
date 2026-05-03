@@ -479,21 +479,38 @@ video {
     }
 }
 
-body.blur-in {
-    animation: blurIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+#loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 10, 1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 999999;
+    pointer-events: none;
+    animation: fadeOutSaida 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-@keyframes blurIn {
+@keyframes fadeOutSaida {
     0% { 
-        filter: blur(20px); 
-        opacity: 0;
+        opacity: 1;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
     100% { 
-        filter: blur(0px); 
-        opacity: 1;
+        opacity: 0;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        visibility: hidden;
     }
 }
 
-body.blur-in::before {
-    filter: inherit;
+    animation: zoomInSuave 1.5s ease-out;
+}
+
+@keyframes zoomInSuave {
+    0% { transform: scale(1.1); filter: blur(10px); }
+    100% { transform: scale(1); filter: blur(0px); }
 }
