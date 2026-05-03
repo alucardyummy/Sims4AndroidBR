@@ -325,31 +325,31 @@
     <p class="sub-footer">Sims4AndroidBR — 2026. Se travar, é culpa do seu celular.</p>
  </footer>
 
- <button id="backToTop" class="back-to-top">↑</button>
+  <button id="backToTop" class="back-to-top">↑</button>
 
 <script>
-    const backToTop = document.getElementById("backToTop");
+    const bttElement = document.getElementById("backToTop");
+    const targetCard = document.getElementById("ultimo-card");
 
-    const backToTop = document.getElementById("backToTop");
-const ultimoCard = document.getElementById("ultimo-card");
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            backToTop.classList.add("show");
-        } else {
-            backToTop.classList.remove("show");
-        }
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                bttElement.classList.add("show");
+            } else {
+                bttElement.classList.remove("show");
+            }
+        });
+    }, {
+        threshold: 0.1
     });
-}, {
-    threshold: 0.1
-});
 
-observer.observe(ultimoCard);
+    if (targetCard) {
+        scrollObserver.observe(targetCard);
+    }
 
-backToTop.onclick = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+    bttElement.onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 </script>
  
 </body>
