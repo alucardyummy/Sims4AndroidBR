@@ -634,3 +634,9 @@ body::before {
                 inset 0 0 10px rgba(62, 198, 184, 0.4);
     transition: all 0s; 
 }
+
+#modal-copiado .modal-content {
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(62, 198, 184, 0.4);
+    box-shadow: 0 0 30px rgba(62, 198, 184, 0.2);
+}
