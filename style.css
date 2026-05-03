@@ -560,9 +560,13 @@ body::before {
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s ease;
+    transform: translateY(20px) scale(0.8);
+    
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.5s;
+    
     border: none;
     overflow: hidden;
 }
@@ -589,6 +593,7 @@ body::before {
 .back-to-top.show {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0) scale(1);
 }
 
 @keyframes rotateCobrinha {
