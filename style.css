@@ -488,32 +488,30 @@ video {
     background: #0a0a0a;
     z-index: 999999;
     pointer-events: none;
-    animation: fadeSimples 1.2s ease-out forwards;
+    animation: sumirCortina 1.5s ease-in-out forwards;
 }
 
-@keyframes fadeSimples {
+@keyframes sumirCortina {
+    0% { opacity: 1; }
+    30% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+.blur-in main {
+    animation: entradaSuave 1.2s ease-out forwards;
+}
+
+@keyframes entradaSuave {
     0% { 
+        opacity: 0;
+        transform: scale(1.02);
+    }
+    100% { 
         opacity: 1;
-    }
-    100% { 
-        opacity: 0;
-        visibility: hidden;
-    }
-}
-
-main {
-    animation: entradaSuaveConteudo 1.2s ease-out forwards;
-}
-
-@keyframes entradaSuaveConteudo {
-    0% { 
-        filter: blur(10px); 
-        transform: scale(1.05);
-        opacity: 0;
-    }
-    100% { 
-        filter: blur(0px); 
         transform: scale(1);
-        opacity: 1;
     }
+}
+
+body::before {
+    background-color: #0a0a0a !important;
 }
