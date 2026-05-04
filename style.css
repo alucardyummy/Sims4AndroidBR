@@ -548,7 +548,7 @@ body::before {
     left: 20px;
     width: 55px;
     height: 55px;
-    background: rgba(10, 10, 10, 0.8);
+    background: rgba(255, 255, 255, 0.05) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 50%;
@@ -567,8 +567,10 @@ body::before {
     
     transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.5s;
     
-    border: none;
+    border: 1px solid rgba(62, 198, 184, 0.2);
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 
+                inset 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .back-to-top::before {
@@ -585,7 +587,7 @@ body::before {
     content: "";
     position: absolute;
     inset: 2px;
-    background: rgba(10, 10, 10, 0.9);
+    background: rgba(10, 10, 10, 0.85) !important;
     border-radius: 50%;
     z-index: -1;
 }
