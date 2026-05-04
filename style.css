@@ -661,7 +661,9 @@ body.modal-aberto {
     height: auto;
     filter: drop-shadow(0 0 15px rgba(62, 198, 184, 0.5));
     margin-bottom: 20px;
-    object-fit: contain; 
+    object-fit: contain;
+    transform: translateZ(0); 
+    will-change: transform;
 }
 
 .loader-text {
