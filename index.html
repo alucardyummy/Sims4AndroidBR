@@ -238,15 +238,21 @@
     bgMusic.loop = true;
     bgMusic.volume = 0.05;
 
-    let gifClicks = 0;
-    const nhawGif = document.getElementById('pet-clicavel');
-    
-    const hintCat = document.getElementById('hint-cat');
-  
+  let gifClicks = 0;
+const nhawGif = document.getElementById('pet-clicavel');
+const hintCat = document.getElementById('hint-cat');
+
 if (nhawGif) {
     nhawGif.addEventListener('click', () => {
         gifClicks++;
-        
+
+        if (gifClicks === 1 || gifClicks === 3 || gifClicks === 4) {
+            document.body.classList.remove('tremidinha-ativa'); 
+            void document.body.offsetWidth; 
+            document.body.classList.add('tremidinha-ativa');
+            setTimeout(() => document.body.classList.remove('tremidinha-ativa'), 300);
+        }
+
         nhawGif.style.transform = 'scale(0.9)';
         setTimeout(() => { nhawGif.style.transform = 'scale(1)'; }, 100);
      
