@@ -651,10 +651,13 @@ body.modal-aberto {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: #3ec6b8;
+    
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    color: #ffffff; 
+    
     padding: 12px 25px;
     border-radius: 20px;
     border: 1px solid rgba(62, 198, 184, 0.5);
@@ -663,7 +666,7 @@ body.modal-aberto {
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
     opacity: 0;
     pointer-events: none;
-    box-shadow: 0 0 20px rgba(62, 198, 184, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 .toast.show {
