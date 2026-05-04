@@ -247,23 +247,41 @@
     let gifClicks = 0;
     const nhawGif = document.querySelector('.config-box img');
   
-    function criarUmCoracao() {
-        const coracao = document.createElement('div');
-        coracao.classList.add('heart-particle');
-        coracao.innerText = '💖';
-        const randomLeft = Math.random() * 90 + 5;
-        const randomSize = Math.random() * 15 + 15;
-        coracao.style.left = `${randomLeft}vw`;
-        coracao.style.fontSize = `${randomSize}px`;
-        coracao.style.color = 'rgba(255, 105, 180, 0.5)';
-        if (Math.random() < 0.25) {
-            coracao.classList.add('heart-explodir');
-            setTimeout(() => { coracao.remove(); }, 3700);
-        } else {
-            setTimeout(() => { coracao.remove(); }, 6000);
-        }
-        document.body.appendChild(coracao);
+    function estourarBolha(x, y) {
+    for (let i = 0; i < 6; i++) {
+        const p = document.createElement('div');
+        p.className = 'pop-bubble';
+        p.style.left = x + 'px';
+        p.style.top = y + 'px';
+        p.style.setProperty('--dx', (Math.random() - 0.5) * 100 + 'px');
+        p.style.setProperty('--dy', (Math.random() - 0.5) * 100 + 'px');
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 600);
     }
+    }
+  
+  function criarUmCoracao() {
+    const coracao = document.createElement('div');
+    coracao.classList.add('heart-particle');
+    coracao.innerText = '💖';
+    
+    const randomLeft = Math.random() * 100;
+    const randomXDist = (Math.random() - 0.5) * 200;
+    const size = Math.random() * 20 + 15;
+    
+    coracao.style.left = `${randomLeft}vw`;
+    coracao.style.fontSize = `${size}px`;
+    coracao.style.setProperty('--random-x', `${randomXDist}px`);
+    
+    document.body.appendChild(coracao);
+   
+    const tempoVida = Math.random() * 3000 + 2000; 
+    setTimeout(() => {
+        const rect = coracao.getBoundingClientRect();
+        estourarBolha(rect.left, rect.top);
+        coracao.remove();
+    }, tempoVida);
+  }
 
     function criarPoeira(x, y) {
         for (let i = 0; i < 8; i++) {
@@ -313,27 +331,35 @@
     });
   
     if (nhawGif) {
-        nhawGif.style.cursor = 'pointer';
-        nhawGif.addEventListener('click', () => {
-            gifClicks++;
-            nhawGif.style.transform = 'scale(0.9)';
-            setTimeout(() => { nhawGif.style.transform = 'scale(1)'; }, 100);
-            if (gifClicks === 5) {
-                gifClicks = 0;
-                bgMusic.pause();
-                woohoo.currentTime = 0; woohoo.volume = 0.6; woohoo.play();
-                nhawGif.classList.add('woohoo-shake');
-                let intervalCora = setInterval(criarUmCoracao, 300);
-                setTimeout(() => {
-                    clearInterval(intervalCora);
-                    nhawGif.classList.remove('woohoo-shake');
-                    let fadeout = setInterval(() => {
-                        if (woohoo.volume > 0.02) woohoo.volume -= 0.02;
-                        else { woohoo.pause(); bgMusic.play(); clearInterval(fadeout); }
-                    }, 300);
-                }, 23000);
-            }
-        });
+    nhawGif.addEventListener('click', () => {
+        gifClicks++;
+        nhawGif.style.transform = 'scale(0.9)';
+        setTimeout(() => { nhawGif.style.transform = 'scale(1)'; }, 100);
+        
+        if (gifClicks === 5) {
+            gifClicks = 0;
+            bgMusic.pause();
+            document.body.classList.add('vibe-rosa');
+            
+            woohoo.currentTime = 0; 
+            woohoo.volume = 0.6; 
+            woohoo.play();
+            
+            nhawGif.classList.add('woohoo-shake');
+            let intervalCora = setInterval(criarUmCoracao, 200);
+
+            setTimeout(() => {
+                clearInterval(intervalCora);
+                nhawGif.classList.remove('woohoo-shake');
+                document.body.classList.remove('vibe-rosa');
+                
+                let fadeout = setInterval(() => {
+                    if (woohoo.volume > 0.02) woohoo.volume -= 0.02;
+                    else { woohoo.pause(); bgMusic.play(); clearInterval(fadeout); }
+                }, 300);
+            }, 23000);
+        }
+    });
     }
   
     function abrirModal(id, element) {
