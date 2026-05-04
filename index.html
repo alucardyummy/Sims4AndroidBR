@@ -365,47 +365,22 @@ document.addEventListener('DOMContentLoaded', () => {
   <button id="backToTop" class="back-to-top">↑</button>
 
 <script>
-    const bttElement = document.getElementById("backToTop");
-    const targetCard = document.getElementById("ultimo-card");
-
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                bttElement.classList.add("show");
-            } else {
-                bttElement.classList.remove("show");
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    if (targetCard) {
-        scrollObserver.observe(targetCard);
-    }
-
-    bttElement.onclick = function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-</script>
-
- <script>
-window.addEventListener('DOMContentLoaded', () => {
+ 
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader-overlay');
         const loaderGif = document.querySelector('.loader-gif');
+        
         if (loaderGif) {
             const currentSrc = loaderGif.src;
             loaderGif.src = '';
             loaderGif.src = currentSrc;
         }
-    });
 
-    window.addEventListener('load', () => {
-        const loader = document.getElementById('loader-overlay');
         setTimeout(() => {
             loader.classList.add('hidden');
         }, 1800);
     });
-
+ 
     const bttElement = document.getElementById("backToTop");
     const targetCard = document.getElementById("ultimo-card");
 
@@ -419,11 +394,14 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    if (targetCard) { scrollObserver.observe(targetCard); }
+    if (targetCard) { 
+        scrollObserver.observe(targetCard); 
+    }
 
     bttElement.onclick = function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
- </script>
+</script>
+ 
 </body>
 </html>
