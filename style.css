@@ -831,3 +831,26 @@ body {
 .modal-content {
     touch-action: pan-x pan-y pinch-zoom !important;
 }
+
+#loader-transicao {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: #0a0a0a;
+    z-index: 3000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pulse-loader {
+    width: 60px;
+    height: auto;
+    animation: pulsoCarregamento 0.8s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 15px rgba(62, 198, 184, 0.8));
+}
+
+@keyframes pulsoCarregamento {
+    0% { transform: scale(0.9); opacity: 0.7; filter: drop-shadow(0 0 5px rgba(62, 198, 184, 0.4)); }
+    100% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 25px rgba(62, 198, 184, 1)); }
+}
