@@ -205,7 +205,7 @@ body::before {
 }
 
 .card .card-icon[src*="mimi.gif"],
-.card .card-icon[src*="conteiner-wow.png"] {
+.card .card-icon[src*="conteiner-wow.webp"] { 
     width: 40px !important;
     height: 40px !important;
 }
