@@ -405,12 +405,12 @@ body.vibe-rosa::after {
 }
 
 .poeira-cosmica {
-    position: absolute;
     width: 2px;
     height: 2px;
     background-color: #3ec6b8;
     border-radius: 50%;
     pointer-events: none;
+    z-index: 99999;
 }
 
 @keyframes brilharSuave {
