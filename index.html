@@ -387,8 +387,10 @@ document.addEventListener('DOMContentLoaded', () => {
     bttElement.onclick = function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
- 
-    <script> window.addEventListener('DOMContentLoaded', () => {
+</script>
+
+ <script>
+window.addEventListener('DOMContentLoaded', () => {
         const loaderGif = document.querySelector('.loader-gif');
         if (loaderGif) {
             const currentSrc = loaderGif.src;
@@ -403,7 +405,25 @@ document.addEventListener('DOMContentLoaded', () => {
             loader.classList.add('hidden');
         }, 1800);
     });
-</script>
- 
+
+    const bttElement = document.getElementById("backToTop");
+    const targetCard = document.getElementById("ultimo-card");
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                bttElement.classList.add("show");
+            } else {
+                bttElement.classList.remove("show");
+            }
+        });
+    }, { threshold: 0.1 });
+
+    if (targetCard) { scrollObserver.observe(targetCard); }
+
+    bttElement.onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+ </script>
 </body>
 </html>
