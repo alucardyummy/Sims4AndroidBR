@@ -380,6 +380,45 @@ document.addEventListener('DOMContentLoaded', () => {
     bttElement.onclick = function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+
+     let gifClicks = 0;
+const woohoo = new Audio('audio/woohoo.mp3');
+const nhawGif = document.querySelector('img[src*="nhaw.gif"]');
+
+if (nhawGif) {
+    nhawGif.style.cursor = 'pointer';
+    nhawGif.style.transition = 'filter 2s ease, transform 0.1s';
+
+    nhawGif.addEventListener('click', () => {
+        gifClicks++;
+        
+        nhawGif.style.transform = 'scale(0.9)';
+        setTimeout(() => { nhawGif.style.transform = 'scale(1)'; }, 100);
+
+        if (gifClicks === 5) {
+            gifClicks = 0;
+            woohoo.currentTime = 0;
+            woohoo.volume = 0.6;
+            woohoo.play();
+            
+            nhawGif.classList.add('woohoo-shake');
+
+            setTimeout(() => {
+                nhawGif.classList.remove('woohoo-shake');
+                
+                let fadeout = setInterval(() => {
+                    if (woohoo.volume > 0.02) {
+                        woohoo.volume -= 0.02;
+                    } else {
+                        woohoo.pause();
+                        woohoo.currentTime = 0;
+                        clearInterval(fadeout);
+                    }
+                }, 300);
+            }, 23000);
+        }
+    });
+}
 </script>
 
  <div id="toast-notif" class="toast">Link copiado!<3</div>
