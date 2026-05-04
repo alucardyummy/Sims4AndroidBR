@@ -71,6 +71,8 @@ body.vibe-rosa::after {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.2);
     box-shadow: 0 0 15px rgba(62, 198, 184, 0.8), inset 0 0 10px rgba(62, 198, 184, 0.4);
+    
+    overflow: hidden; 
 }
 
 .expandir-cursor {
@@ -403,11 +405,12 @@ body.vibe-rosa::after {
 }
 
 .poeira-cosmica {
-    position: fixed;
+    position: absolute;
+    width: 2px;
+    height: 2px;
     background-color: #3ec6b8;
     border-radius: 50%;
     pointer-events: none;
-    z-index: 99998;
 }
 
 @keyframes brilharSuave {
