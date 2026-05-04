@@ -218,7 +218,7 @@
         </div>
     </div>
 
-  <footer class="footer-acido">
+   <footer class="footer-acido">
     <button type="button" onclick="copiarLink(this)" class="share-link">
     🔗 Compartilhar Guia
     </button>
@@ -229,16 +229,6 @@
  <button id="backToTop" class="back-to-top">↑</button>
 
  <script>
-    const bttElement = document.getElementById("backToTop");
-    const targetCard = document.getElementById("ultimo-card");
-    const btn = document.getElementById('btn-comecar');
-    const cards = document.getElementById('guia-cards');
-    const divisor = document.getElementById('meu-divisor');
-    const topbar = document.getElementById('minha-topbar');
-    const hero = document.getElementById('hero-section');
-    const deviceInfo = document.getElementById('device-info');
-    const cursor = document.getElementById('custom-cursor');
-
     const bgMusic = new Audio('audio/Mii Editor - Mii Maker (Wii U) Music.mp3');
     const woohoo = new Audio('audio/woohoo.mp3');
     bgMusic.loop = true;
@@ -246,48 +236,67 @@
 
     let gifClicks = 0;
     const nhawGif = document.querySelector('.config-box img');
-  
-    function estourarBolha(x, y) {
-    for (let i = 0; i < 6; i++) {
-        const p = document.createElement('div');
-        p.className = 'pop-bubble';
-        p.style.left = x + 'px';
-        p.style.top = y + 'px';
-        p.style.setProperty('--dx', (Math.random() - 0.5) * 100 + 'px');
-        p.style.setProperty('--dy', (Math.random() - 0.5) * 100 + 'px');
-        document.body.appendChild(p);
-        setTimeout(() => p.remove(), 600);
-    }
-    }
-  
-  function criarUmCoracao() {
-    const coracao = document.createElement('div');
-    coracao.classList.add('heart-particle');
     
-    const size = Math.random() * 25 + 20; 
-    coracao.style.width = `${size}px`;
-    coracao.style.height = `${size}px`;
-    
-    coracao.style.left = Math.random() * 100 + 'vw';
-    coracao.style.setProperty('--random-x', (Math.random() - 0.5) * 200 + 'px');
-    
-    document.body.appendChild(coracao);
+    /* Referências corrigidas conforme seu HTML */
+    const btn = document.getElementById('btn-comecar');
+    const hero = document.getElementById('hero-section');
+    const topbar = document.getElementById('minha-topbar');
+    const divisor = document.getElementById('meu-divisor');
+    const deviceInfo = document.getElementById('device-info');
+    const cards = document.getElementById('guia-cards');
+    const cursor = document.getElementById('custom-cursor');
+    const bttElement = document.getElementById("backToTop");
+    const targetCard = document.getElementById("ultimo-card");
 
-    const tempoVida = Math.random() * 4000 + 2000;
-    setTimeout(() => {
-        const rect = coracao.getBoundingClientRect();
-        if (typeof estourarBolha === 'function') {
-            estourarBolha(rect.left + size/2, rect.top + size/2);
+    function estourarBolha(x, y) {
+        const quantidade = 15;
+        for (let i = 0; i < quantidade; i++) {
+            const p = document.createElement('div');
+            p.className = 'pop-bubble';
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 80 + 20;
+            const dx = Math.cos(angle) * velocity;
+            const dy = Math.sin(angle) * velocity;
+            p.style.left = x + 'px';
+            p.style.top = y + 'px';
+            p.style.setProperty('--dx', dx + 'px');
+            p.style.setProperty('--dy', dy + 'px');
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 800);
         }
-        coracao.remove();
-    }, tempoVida);
-}
-    
+    }
+
+    function criarUmCoracao() {
+        const coracao = document.createElement('div');
+        coracao.classList.add('heart-particle');
+        const size = Math.random() * 50 + 45;
+        coracao.style.width = `${size}px`;
+        coracao.style.height = `${size}px`;
+        coracao.style.left = Math.random() * 100 + 'vw';
+        coracao.style.setProperty('--random-x', (Math.random() - 0.5) * 200 + 'px');
+        document.body.appendChild(coracao);
+        const tempoVida = Math.random() * 3000 + 3000;
+        setTimeout(() => {
+            const rect = coracao.getBoundingClientRect();
+            const x = rect.left + size / 2;
+            const y = rect.top + size / 2;
+            const sorteio = Math.random();
+            if (sorteio > 0.4) {
+                estourarBolha(x, y);
+                coracao.remove();
+            } else {
+                coracao.classList.add('vibe-poeira');
+                setTimeout(() => coracao.remove(), 1000);
+            }
+        }, tempoVida);
+    }
+
     function criarPoeira(x, y) {
         for (let i = 0; i < 8; i++) {
             const p = document.createElement('div');
             p.className = 'poeira-cosmica';
-            p.style.left = x + 'px'; p.style.top = y + 'px';
+            p.style.left = x + 'px';
+            p.style.top = y + 'px';
             const ax = (Math.random() - 0.5) * 100;
             const ay = (Math.random() - 0.5) * 100;
             p.style.setProperty('--x', ax + 'px');
@@ -314,8 +323,10 @@
             cards.style.display = 'grid';
             muteBtn.style.display = 'flex';
             setTimeout(() => {
-                topbar.style.opacity = "1"; divisor.style.opacity = "1";
-                deviceInfo.style.opacity = "1"; cards.style.opacity = "1";
+                topbar.style.opacity = "1";
+                divisor.style.opacity = "1";
+                deviceInfo.style.opacity = "1";
+                cards.style.opacity = "1";
             }, 50);
         }, 500);
     });
@@ -329,43 +340,38 @@
         if (document.hidden) bgMusic.pause();
         else if (hero.style.display === 'none' && !bgMusic.muted) bgMusic.play().catch(() => {});
     });
-  
-    if (nhawGif) {
-    nhawGif.addEventListener('click', () => {
-        gifClicks++;
-        nhawGif.style.transform = 'scale(0.9)';
-        setTimeout(() => { nhawGif.style.transform = 'scale(1)'; }, 100);
-        
-        if (gifClicks === 5) {
-            gifClicks = 0;
-            bgMusic.pause();
-            document.body.classList.add('vibe-rosa');
-            
-            woohoo.currentTime = 0; 
-            woohoo.volume = 0.6; 
-            woohoo.play();
-            
-            nhawGif.classList.add('woohoo-shake');
-            let intervalCora = setInterval(criarUmCoracao, 200);
 
-            setTimeout(() => {
-                clearInterval(intervalCora);
-                nhawGif.classList.remove('woohoo-shake');
-                document.body.classList.remove('vibe-rosa');
-                
-                let fadeout = setInterval(() => {
-                    if (woohoo.volume > 0.02) woohoo.volume -= 0.02;
-                    else { woohoo.pause(); bgMusic.play(); clearInterval(fadeout); }
-                }, 300);
-            }, 23000);
-        }
-    });
+    if (nhawGif) {
+        nhawGif.addEventListener('click', () => {
+            gifClicks++;
+            nhawGif.style.transform = 'scale(0.9)';
+            setTimeout(() => { nhawGif.style.transform = 'scale(1)'; }, 100);
+            if (gifClicks === 5) {
+                gifClicks = 0;
+                bgMusic.pause();
+                document.body.classList.add('vibe-rosa');
+                woohoo.currentTime = 0;
+                woohoo.volume = 0.6;
+                woohoo.play();
+                nhawGif.classList.add('woohoo-shake');
+                let intervalCora = setInterval(criarUmCoracao, 200);
+                setTimeout(() => {
+                    clearInterval(intervalCora);
+                    nhawGif.classList.remove('woohoo-shake');
+                    document.body.classList.remove('vibe-rosa');
+                    let fadeout = setInterval(() => {
+                        if (woohoo.volume > 0.02) woohoo.volume -= 0.02;
+                        else { woohoo.pause(); bgMusic.play(); clearInterval(fadeout); }
+                    }, 300);
+                }, 23000);
+            }
+        });
     }
-  
+
     function abrirModal(id, element) {
         document.getElementById(id).style.display = 'flex';
         document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=yes');
-        if(element) { element.style.transform = 'scale(0.95)'; setTimeout(() => element.style.transform = '', 100); }
+        if (element) { element.style.transform = 'scale(0.95)'; setTimeout(() => element.style.transform = '', 100); }
     }
 
     function fecharModal(id) {
@@ -384,8 +390,10 @@
     }
 
     window.addEventListener('mousedown', (e) => {
-        cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-        cursor.classList.remove('expandir-cursor'); void cursor.offsetWidth;
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        cursor.classList.remove('expandir-cursor');
+        void cursor.offsetWidth;
         cursor.classList.add('expandir-cursor');
         criarPoeira(e.clientX, e.clientY);
     });
@@ -394,11 +402,11 @@
         entries.forEach(entry => { if (entry.isIntersecting) bttElement.classList.add("show"); else bttElement.classList.remove("show"); });
     }, { threshold: 0.1 });
     if (targetCard) scrollObserver.observe(targetCard);
-    bttElement.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     
+    bttElement.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     document.querySelectorAll('video').forEach(v => v.addEventListener('contextmenu', e => e.preventDefault()));
- </script>
+</script>
 
- <div id="toast-notif" class="toast">Link copiado! <3</div>
+<div id="toast-notif" class="toast">Link copiado! &lt;3</div>
 </body>
 </html>
