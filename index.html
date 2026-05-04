@@ -425,7 +425,7 @@ function criarExplosaoFumaca(x, y) {
 
     criarPoeira(25, 25); 
 });
-
+  
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) bttElement.classList.add("show"); else bttElement.classList.remove("show"); });
     }, { threshold: 0.1 });
