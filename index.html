@@ -266,20 +266,23 @@
     });
      
         function abrirModal(id, element) {
-            const modal = document.getElementById(id);
-            modal.style.display = 'flex';
-            if(element) {
-                element.style.transform = 'scale(0.95)';
-                setTimeout(() => element.style.transform = '', 100);
-            }
+    const modal = document.getElementById(id);
+    modal.style.display = 'flex';
+    document.body.classList.add('modal-aberto');
+
+    if(element) {
+        element.style.transform = 'scale(0.95)';
+        setTimeout(() => element.style.transform = '', 100);
+    }
         }
 
         function fecharModal(id) {
-            const modal = document.getElementById(id);
-            modal.style.display = 'none';
-            modal.querySelectorAll('video').forEach(v => v.pause());
+    const modal = document.getElementById(id);
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-aberto');
+    modal.querySelectorAll('video').forEach(v => v.pause());
         }
-
+     
      async function copiarLink(elemento) {
     const shareData = {
         title: 'Guia Sims 4 Android',
