@@ -287,27 +287,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
 });
-     
+
      async function copiarLink(elemento) {
-    const shareData = {
-        title: 'Guia Sims 4 Android',
-        text: 'Dá uma olhada nesse guia completo de como rodar TS4 no Android! 😋🎮',
-        url: window.location.href
-    };
+    const url = window.location.href;
+    const toast = document.getElementById('toast-notif');
 
     try {
         if (navigator.share) {
-            await navigator.share(shareData);
+            await navigator.share({
+                title: 'Guia Sims 4 Android',
+                text: 'Dá uma olhada nesse guia! 😋🎮',
+                url: url
+            });
         } else {
-         
-            navigator.clipboard.writeText(window.location.href);
-            abrirModal('modal-copiado', elemento);
+            await navigator.clipboard.writeText(url);
+            
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
         }
     } catch (err) {
-     
-        console.log('Compartilhamento cancelado ou erro:', err);
+        console.log('Erro ou cancelado');
     }
-     }
+}
      
      function criarPoeira(x, y) {
             for (let i = 0; i < 8; i++) {
@@ -381,6 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 </script>
- 
+
+ <div id="toast-notif" class="toast">Link copiado!<3</div>
 </body>
 </html> 
