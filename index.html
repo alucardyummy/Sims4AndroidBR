@@ -386,23 +386,39 @@ function criarExplosaoFumaca(x, y) {
     document.body.appendChild(muteBtn);
 
     btn.addEventListener('click', () => {
-        hero.classList.add('fade-out');
-        bgMusic.play().catch(() => {});
+    hero.classList.add('fade-out');
+    bgMusic.play().catch(() => {});
+    
+    const loaderTransicao = document.getElementById('loader-transicao');
+    loaderTransicao.style.display = 'flex';
+    setTimeout(() => loaderTransicao.style.opacity = "1", 50);
+
+    setTimeout(() => {
+        hero.style.display = 'none';
+
+        topbar.style.display = 'flex';
+        divisor.style.display = 'block';
+        deviceInfo.style.display = 'block';
+        cards.style.display = 'grid';
+        muteBtn.style.display = 'flex';
+     
         setTimeout(() => {
-            hero.style.display = 'none';
-            topbar.style.display = 'flex';
-            divisor.style.display = 'block';
-            deviceInfo.style.display = 'block';
-            cards.style.display = 'grid';
-            muteBtn.style.display = 'flex';
+            loaderTransicao.style.opacity = "0";
+            
+            document.body.classList.add('blur-in');
+
             setTimeout(() => {
+                loaderTransicao.style.display = 'none';
+                
                 topbar.style.opacity = "1";
                 divisor.style.opacity = "1";
                 deviceInfo.style.opacity = "1";
                 cards.style.opacity = "1";
-            }, 50);
-        }, 500);
-    });
+            }, 500); 
+
+        }, 1500); 
+    }, 500);
+});
 
     muteBtn.addEventListener('click', () => {
         bgMusic.muted = !bgMusic.muted;
