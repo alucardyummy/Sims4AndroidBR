@@ -2,25 +2,18 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <link rel="preload" as="image" href="img/alusymph.gif">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sims4AndroidBR</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#3ec6b8">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="img/BRsims-fav.webp">
 </head>
 <body class="blur-in">
-    <div id="loader-overlay">
-        <div class="loader-container">
-            <img src="img/alusymph.gif" alt="Carregando..." class="loader-gif">
-            <p class="loader-text">Carregando!</p>
-        </div>
-    </div> <div id="custom-cursor"></div>
+    <div id="loader-overlay"></div>
+    <div id="custom-cursor"></div>
  
     <header class="topbar" id="minha-topbar" style="display: none; opacity: 0;">
         <a href="index.html" class="logo">
-         <img src="img/SIMS4ANDROIDBR.webp" alt="Logo" class="proibido">
+            <img src="img/SIMS4ANDROIDBR.webp" alt="Logo" class="proibido">
         </a>
     </header>
 
@@ -271,8 +264,8 @@
             }
         }
     });
-
-     function abrirModal(id, element) {
+     
+        function abrirModal(id, element) {
     const modal = document.getElementById(id);
     modal.style.display = 'flex';
     document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=yes');
@@ -281,15 +274,19 @@
         element.style.transform = 'scale(0.95)';
         setTimeout(() => element.style.transform = '', 100);
     }
-}
+        }
 
-function fecharModal(id) {
+        function fecharModal(id) {
     const modal = document.getElementById(id);
     modal.style.display = 'none';
     document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
     
     modal.querySelectorAll('video').forEach(v => v.pause());
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+});
      
      async function copiarLink(elemento) {
     const shareData = {
@@ -347,34 +344,7 @@ function fecharModal(id) {
         e.preventDefault();
     });
 });
-     window.addEventListener('load', () => {
-        const loader = document.getElementById('loader-overlay');
-        setTimeout(() => {
-            if (loader) loader.classList.add('hidden');
-        }, 1800); 
-    });
-
-    setTimeout(() => {
-        const loader = document.getElementById('loader-overlay');
-        if (loader && !loader.classList.contains('hidden')) {
-            loader.classList.add('hidden');
-        }
-    }, 4000);
-
-    const bttElement = document.getElementById("backToTop");
-    const targetCard = document.getElementById("ultimo-card");
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (bttElement) bttElement.classList.toggle("show", entry.isIntersecting);
-        });
-    }, { threshold: 0.1 });
-    if (targetCard) scrollObserver.observe(targetCard);
-    if (bttElement) bttElement.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    </script> <footer class="footer-acido">
-    </footer>
-
- <button id="backToTop" class="back-to-top">↑</button>
+    </script>
 
  <footer class="footer-acido">
     <button type="button" onclick="copiarLink(this)" class="share-link">
@@ -384,5 +354,33 @@ function fecharModal(id) {
     <p>Feito com ♡ (e muita gambiarra) para quem não tem um PC da NASA.</p>
     <p class="sub-footer">Sims4AndroidBR — 2026. Se travar, é culpa do seu celular.</p>
  </footer>
+
+  <button id="backToTop" class="back-to-top">↑</button>
+
+<script>
+    const bttElement = document.getElementById("backToTop");
+    const targetCard = document.getElementById("ultimo-card");
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                bttElement.classList.add("show");
+            } else {
+                bttElement.classList.remove("show");
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    if (targetCard) {
+        scrollObserver.observe(targetCard);
+    }
+
+    bttElement.onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+</script>
+ 
 </body>
-</html>
+</html> 
