@@ -387,6 +387,13 @@ document.addEventListener('DOMContentLoaded', () => {
     bttElement.onclick = function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+ 
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader-overlay');
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 500);
+    });
 </script>
  
 </body>
