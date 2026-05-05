@@ -18,7 +18,7 @@
         <p style="color: #3ec6b8; font-family: 'LemonMilk', sans-serif; margin-top: 15px; letter-spacing: 2px;">Carregando...</p>
     </div>
  
-    <header class="topbar" id="minha-topbar" style="display: none; opacity: 0;">
+    <header class="topbar" id="minha-topbar" style="visibility: hidden; opacity: 0;">
         <a href="index.html" class="logo">
             <img src="img/SIMS4ANDROIDBR.webp" alt="Logo" class="proibido">
         </a>
@@ -33,9 +33,9 @@
             </div>
         </section>
 
-        <div class="divisor" id="meu-divisor" style="display: none; opacity: 0;"></div>
+        <div class="divisor" id="meu-divisor" style="visibility: hidden; opacity: 0;"></div>
 
-        <section id="device-info" style="display: none; opacity: 0; padding: 0 20px;">
+        <section id="device-info" style="visibility: hidden; opacity: 0; padding: 0 20px;">
     <div class="config-box" style="max-width: 600px; margin: 40px auto 20px auto; text-align: right; position: relative;">
         
         <img src="img/nono.gif" id="hint-cat" style="position: absolute; width: 80px; top: -60px; left: 10px; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; z-index: 10;">
@@ -49,7 +49,7 @@
     </div>
         </section>
 
-        <section class="grid" id="guia-cards" style="display: none; opacity: 0;">
+        <section class="grid" id="guia-cards" style="visibility: hidden; opacity: 0;">
     <div class="card" onclick="abrirModal('modal-download', this)">
         <div class="card-glass"></div>
         <div class="card-glow"></div>
@@ -392,15 +392,14 @@ function criarExplosaoFumaca(x, y) {
     setTimeout(() => {
         hero.style.display = 'none';
 
-        topbar.style.display = 'flex';
-        divisor.style.display = 'block';
-        deviceInfo.style.display = 'block';
-        cards.style.display = 'grid';
+        topbar.style.visibility = 'visible';
+        deviceInfo.style.visibility = 'visible';
+        cards.style.visibility = 'visible';
+        divisor.style.visibility = 'visible';
         muteBtn.style.display = 'flex';
      
         setTimeout(() => {
             loaderTransicao.style.opacity = "0";
-            
             document.body.classList.add('blur-in');
 
             setTimeout(() => {
@@ -412,7 +411,7 @@ function criarExplosaoFumaca(x, y) {
                 cards.style.opacity = "1";
             }, 800); 
 
-        }, 2600); 
+        }, 1900); 
     }, 500);
 });
 
