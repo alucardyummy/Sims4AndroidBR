@@ -668,7 +668,7 @@ body.modal-aberto::after {
 }
 
 body:not(.modal-aberto) {
-    touch-action: none;
+    touch-action: pan-y;
 }
 
 .toast {
