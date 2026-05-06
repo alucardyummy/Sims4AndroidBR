@@ -333,6 +333,7 @@ body.vibe-rosa::after {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     overflow: hidden;
+    touch-action: pinch-zoom;
 }
 
 .modal-content {
