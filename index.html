@@ -251,15 +251,20 @@ const hintCat = document.getElementById('hint-cat');
 
 
  let easterEggAtivo = false;
-let jaAconteceu = false;
+ let jaAconteceu = false;
+ let intervalCora;
 
-if (nhawGif) {
+  if (nhawGif) {
     nhawGif.addEventListener('click', () => {
         if (jaAconteceu) return;
 
         gifClicks++;
         
-        if ([1, 3, 4].includes(gifClicks)) {
+       if (gifClicks === 2 && hintCat) {
+    hintCat.style.opacity = "1";
+       }
+     
+       if ([1, 3, 4].includes(gifClicks)) {
             document.body.classList.add('tremidinha-ativa');
             setTimeout(() => document.body.classList.remove('tremidinha-ativa'), 300);
         }
@@ -268,7 +273,7 @@ if (nhawGif) {
             jaAconteceu = true;
             easterEggAtivo = true;
             gifClicks = 0;
-            hintCat.style.opacity = "0"; 
+        if (hintCat) hintCat.style.opacity = "0";
             
             bgMusic.pause();
             document.body.classList.add('vibe-rosa');
@@ -276,7 +281,7 @@ if (nhawGif) {
             woohoo.volume = 1.0;
             woohoo.play();
             
-            let intervalCora = setInterval(() => {
+            intervalCora = setInterval(() => {
                 if(easterEggAtivo) criarUmCoracao();
             }, 200);
             
@@ -437,6 +442,9 @@ function criarExplosaoFumaca(x, y) {
 
     document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
+        easterEggAtivo = false;
+    if (intervalCora) clearInterval(intervalCora);
+        document.body.classList.remove('vibe-rosa');
         bgMusic.pause();
         woohoo.pause();
     } else if (hero.style.display === 'none' && !bgMusic.muted) {
