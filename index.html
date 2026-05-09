@@ -491,18 +491,7 @@ window.addEventListener('popstate', (event) => {
             m.querySelectorAll('video').forEach(v => v.pause());
         }
     });
-}); 
-
-function fecharModal(id) {
-    const m = document.getElementById(id);
-    m.style.display = 'none';
-    
-    document.body.style.overflow = 'auto';
-    
-    document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-    
-    m.querySelectorAll('video').forEach(v => v.pause());
-}
+});
 
     async function copiarLink() {
         const toast = document.getElementById('toast-notif');
