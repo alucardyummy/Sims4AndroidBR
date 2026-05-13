@@ -844,3 +844,24 @@ img[src*="nhaw.webp"] {
     pointer-events: auto !important;
     cursor: pointer;
 }
+
+.grid[style*="display: grid"] .card:last-child,
+.grid[style*="display: block"] .card:last-child,
+#device-info[style*="display: block"] .config-box:last-child,
+.divisor {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden;
+}
+
+.grid, main, #device-info {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: min-content;
+}
+
+.divisor:last-of-type {
+    display: block !important;
+    content-visibility: visible !important;
+}
