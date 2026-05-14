@@ -270,39 +270,59 @@ const hintCat = document.getElementById('hint-cat');
         }
 
         if (gifClicks === 5) {
-            jaAconteceu = true;
-            easterEggAtivo = true;
-            gifClicks = 0;
-        if (hintCat) hintCat.style.opacity = "0";
-            
-            bgMusic.pause();
+    jaAconteceu = true;
+    easterEggAtivo = true;
+    gifClicks = 0;
+    if (hintCat) hintCat.style.opacity = "0";
+    
+    const loader = document.createElement('div');
+    loader.classList.add('vibe-rosa');
+    loader.style.display = 'none'; 
+    document.body.appendChild(loader);
+    
+    setTimeout(() => {
+        loader.remove();
+        bgMusic.pause();
+        woohoo.currentTime = 0;
+        woohoo.volume = 1.0;
+        
+        for (let i = 0; i < 3; i++) {
+            const fake = document.createElement('div');
+            fake.classList.add('heart-particle');
+            fake.style.opacity = '0';
+            fake.style.width = '1px';
+            fake.style.height = '1px';
+            fake.style.left = '-100px';
+            document.body.appendChild(fake);
+            setTimeout(() => fake.remove(), 100);
+        }
+        
+        setTimeout(() => {
             document.body.classList.add('vibe-rosa');
-            woohoo.currentTime = 0;
-            woohoo.volume = 1.0;
-            woohoo.play();
-            
+            woohoo.play().catch(() => {});
             intervalCora = setInterval(() => {
                 if(easterEggAtivo) criarUmCoracao();
             }, 200);
-            
-            setTimeout(() => {
-                clearInterval(intervalCora);
-                easterEggAtivo = false;
-                document.body.classList.remove('vibe-rosa');
-                
-                let fadeout = setInterval(() => {
-                    if (woohoo.volume > 0.05) {
-                        woohoo.volume -= 0.05;
-                    } else { 
-                        woohoo.pause(); 
-                        bgMusic.play(); 
-                        clearInterval(fadeout); 
-                    }
-                }, 300);
-            }, 23000);
-        }
-    });
-}
+        }, 200);
+        
+    }, 100);
+    
+    setTimeout(() => {
+        clearInterval(intervalCora);
+        easterEggAtivo = false;
+        document.body.classList.remove('vibe-rosa');
+        
+        let fadeout = setInterval(() => {
+            if (woohoo.volume > 0.05) {
+                woohoo.volume -= 0.05;
+            } else { 
+                woohoo.pause(); 
+                bgMusic.play().catch(() => {}); 
+                clearInterval(fadeout); 
+            }
+        }, 300);
+    }, 23000);
+  }
   
 if (hintCat) {
     hintCat.addEventListener('click', (e) => {
