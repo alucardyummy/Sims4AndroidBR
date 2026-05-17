@@ -153,6 +153,7 @@ body.vibe-rosa::after {
 .hero p {
   color: #aecdd4;
   margin-bottom: 25px;
+  margin-top: -3px;
 }
 
 #device-info .config-box .pet-interativo {
