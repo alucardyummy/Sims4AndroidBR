@@ -102,6 +102,11 @@ body.vibe-rosa::after {
   width: 100%;
 }
 
+#minha-topbar {
+  display: none;
+  opacity: 0;
+}
+
 .logo img {
   height: 50px;
   width: auto;
@@ -865,6 +870,16 @@ img[src*="nhaw.webp"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#loader-transicao p {
+  color: #3ec6b8;
+  font-family: 'Space Grotesk', sans-serif;
+  margin-top: 15px;
+  letter-spacing: 2px;
 }
 
 .pulse-loader {
