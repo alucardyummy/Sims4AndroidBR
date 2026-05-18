@@ -728,16 +728,31 @@ function criarPoeiraLivre(x, y) {
         clearTimeout(timerEsconder);
         atualizarTempoPorToque(e);
         
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         const barras = document.querySelectorAll('.video-barra');
+        
+        let barraCerta = null;
+        let menorDistancia = Infinity;
+        
         barras.forEach(b => {
             const rect = b.getBoundingClientRect();
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            if (clientX >= rect.left && clientX <= rect.right) {
-                let proporcao = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-                const preenchida = b.querySelector('.video-barra-preenchida');
-                if (preenchida) preenchida.style.width = (proporcao * 100) + '%';
+            if (clientX >= rect.left && clientX <= rect.right && 
+                clientY >= rect.top - 20 && clientY <= rect.bottom + 20) {
+                const distancia = Math.abs(clientY - (rect.top + rect.height / 2));
+                if (distancia < menorDistancia) {
+                    menorDistancia = distancia;
+                    barraCerta = b;
+                }
             }
         });
+        
+        if (barraCerta) {
+            const rect = barraCerta.getBoundingClientRect();
+            let proporcao = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+            const preenchida = barraCerta.querySelector('.video-barra-preenchida');
+            if (preenchida) preenchida.style.width = (proporcao * 100) + '%';
+        }
     }
 });
 
