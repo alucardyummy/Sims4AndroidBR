@@ -140,7 +140,7 @@ body.vibe-rosa::after {
   height: auto;
   margin-bottom: 10px;
   opacity: 0;
-  animation: surgirDoNada 1s ease-out 1.2s forwards;
+  animation: abrirDoMeio 1s ease-out 1.2s forwards;
 }
 
 .hero h1 {
@@ -157,12 +157,12 @@ body.vibe-rosa::after {
   margin-bottom: 25px;
   margin-top: -3px;
   opacity: 0;
-  animation: surgirDoNada 1s ease-out 1.5s forwards;
+  animation: abrirDoMeio 1s ease-out 1.5s forwards;
 }
 
-@keyframes surgirDoNada {
-  0%   { opacity: 0; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1); }
+@keyframes abrirDoMeio {
+  0%   { clip-path: inset(0 50% 0 50%); opacity: 0; }
+  100% { clip-path: inset(0 0% 0 0%);   opacity: 1; }
 }
 
 #device-info .config-box .pet-interativo {
