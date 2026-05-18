@@ -135,10 +135,11 @@ body.vibe-rosa::after {
 }
 
 .hero-titulo {
-  max-width: 500x;
+  max-width: 500px;
   width: 90%;
   height: auto;
   margin-bottom: 10px;
+  animation: abrirDoMeio 1s ease-out forwards;
 }
 
 .hero h1 {
@@ -154,12 +155,8 @@ body.vibe-rosa::after {
   color: #aecdd4;
   margin-bottom: 25px;
   margin-top: -3px;
-  animation-delay: 0.3s;
   opacity: 0;
-}
-
-.hero-titulo, .hero p {
-  animation: abrirDoMeio 1s ease-out forwards;
+  animation: abrirDoMeio 1s ease-out 0.3s forwards;
 }
 
 @keyframes abrirDoMeio {
