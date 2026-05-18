@@ -273,6 +273,7 @@
     let intervalCora;
 
     let viewportOriginal = '';
+    let estaZoomando = false;
    
     if (nhawGif) {
       nhawGif.addEventListener('click', () => {
@@ -452,16 +453,17 @@
     });
 
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        easterEggAtivo = false;
-        if (intervalCora) clearInterval(intervalCora);
-        document.body.classList.remove('vibe-rosa');
-        bgMusic.pause();
-        woohoo.pause();
-      } else if (hero.style.display === 'none' && !bgMusic.muted) {
-        if (woohoo.paused) bgMusic.play().catch(() => {});
-      }
-    });
+  if (document.hidden) {
+    easterEggAtivo = false;
+    if (intervalCora) clearInterval(intervalCora);
+    document.body.classList.remove('vibe-rosa');
+    bgMusic.pause();
+    woohoo.pause();
+    document.querySelectorAll('.step-video').forEach(v => v.pause());
+  } else if (hero.style.display === 'none' && !bgMusic.muted) {
+    if (woohoo.paused) bgMusic.play().catch(() => {});
+  }
+});
 
     let modalAtual = null;
 
@@ -572,7 +574,7 @@ window.addEventListener('pointermove', (e) => {
 });
 
 window.addEventListener('pointerup', (e) => {
-  if (touchMoveu) return;
+  if (touchMoveu || estaZoomando) return;
 
   const target = e.target;
   const elementoInterativo = target.closest('.card') ||
@@ -713,10 +715,11 @@ function criarPoeiraLivre(x, y) {
       }
 
       barra.addEventListener('pointerdown', (e) => {
-        arrastandoBarra = true;
-        clearTimeout(timerEsconder);
-        atualizarTempoPorToque(e);
-        e.preventDefault(); e.stopPropagation();
+         arrastandoBarra = true;
+         barra.style.touchAction = 'none';
+         clearTimeout(timerEsconder);
+         atualizarTempoPorToque(e);
+         e.preventDefault(); e.stopPropagation();
       });
 
       document.addEventListener('pointermove', (e) => {
@@ -724,15 +727,16 @@ function criarPoeiraLivre(x, y) {
       });
 
       document.addEventListener('pointerup', (e) => {
-        if (arrastandoBarra) {
-          arrastandoBarra = false;
-          previewContainer.style.display = 'none';
-          mostrarControles();
-          const rect = barra.getBoundingClientRect();
-          let proporcao = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-          video.currentTime = proporcao * video.duration;
-        }
-      });
+  if (arrastandoBarra) {
+        arrastandoBarra = false;
+        barra.style.touchAction = '';
+        previewContainer.style.display = 'none';
+        mostrarControles();
+        const rect = barra.getBoundingClientRect();
+        let proporcao = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+     video.currentTime = proporcao * video.duration;
+    }
+  });
 
       barra.addEventListener('touchstart', (e) => {
         arrastandoBarra = true;
@@ -854,70 +858,72 @@ document.querySelectorAll('.modal-content').forEach(modal => {
     let timerZoom = null;
 
     modal.addEventListener('touchstart', (e) => {
-        dedosNaTela = e.touches.length;
+  dedosNaTela = e.touches.length;
 
-        if (e.touches.length > 1) {
-            zoomAtivo = true;
+  if (e.touches.length > 1) {
+    zoomAtivo = true;
+    estaZoomando = true;
 
-            if (cursor.parentNode) {
-                cursor._displayAntigo = cursor.style.display;
-                cursor.remove();
-            }
+    if (cursor.parentNode) {
+      cursor._displayAntigo = cursor.style.display;
+      cursor.remove();
+    }
 
-            document.body.style.setProperty('--anim-play-state', 'paused');
+    document.body.style.setProperty('--anim-play-state', 'paused');
 
-            const btt = document.getElementById('backToTop');
-            if (btt) {
-                btt._visAntiga = btt.style.visibility;
-                btt.style.visibility = 'hidden';
-            }
+    const btt = document.getElementById('backToTop');
+    if (btt) {
+      btt._visAntiga = btt.style.visibility;
+      btt.style.visibility = 'hidden';
+    }
 
-            const mute = document.getElementById('mute-control');
-            if (mute) {
-                mute._displayAntigo = mute.style.display;
-                mute.style.display = 'none';
-            }
+    const mute = document.getElementById('mute-control');
+    if (mute) {
+      mute._displayAntigo = mute.style.display;
+      mute.style.display = 'none';
+    }
 
-            document.querySelectorAll('.poeira-cosmica, .heart-particle, .pop-bubble-original, .pop-bubble-fumaca').forEach(el => {
-                el._displayAntigo = el.style.display;
-                el.style.display = 'none';
-            });
-        }
-    }, { passive: true });
+    document.querySelectorAll('.poeira-cosmica, .heart-particle, .pop-bubble-original, .pop-bubble-fumaca').forEach(el => {
+      el._displayAntigo = el.style.display;
+      el.style.display = 'none';
+    });
+  }
+}, { passive: true });
 
     modal.addEventListener('touchend', (e) => {
-        dedosNaTela = e.touches.length;
+  dedosNaTela = e.touches.length;
 
-        if (zoomAtivo && dedosNaTela === 0) {
-            clearTimeout(timerZoom);
-            timerZoom = setTimeout(() => {
-                zoomAtivo = false;
+  if (zoomAtivo && dedosNaTela === 0) {
+    clearTimeout(timerZoom);
+    timerZoom = setTimeout(() => {
+      zoomAtivo = false;
+      estaZoomando = false;
 
-                if (!document.body.contains(cursor)) {
-                    document.body.appendChild(cursor);
-                    cursor.style.display = cursor._displayAntigo || '';
-                }
+      if (!document.body.contains(cursor)) {
+        document.body.appendChild(cursor);
+        cursor.style.display = cursor._displayAntigo || '';
+      }
 
-                document.body.style.setProperty('--anim-play-state', 'running');
-             
-                const btt = document.getElementById('backToTop');
-                if (btt && btt._visAntiga !== undefined) {
-                    btt.style.visibility = btt._visAntiga;
-                }
+      document.body.style.setProperty('--anim-play-state', 'running');
 
-                const mute = document.getElementById('mute-control');
-                if (mute && mute._displayAntigo !== undefined) {
-                    mute.style.display = mute._displayAntigo;
-                }
+      const btt = document.getElementById('backToTop');
+      if (btt && btt._visAntiga !== undefined) {
+        btt.style.visibility = btt._visAntiga;
+      }
 
-                document.querySelectorAll('.poeira-cosmica, .heart-particle, .pop-bubble-original, .pop-bubble-fumaca').forEach(el => {
-                    if (el._displayAntigo !== undefined) {
-                        el.style.display = el._displayAntigo;
-                    }
-                });
-            }, 600);
+      const mute = document.getElementById('mute-control');
+      if (mute && mute._displayAntigo !== undefined) {
+        mute.style.display = mute._displayAntigo;
+      }
+
+      document.querySelectorAll('.poeira-cosmica, .heart-particle, .pop-bubble-original, .pop-bubble-fumaca').forEach(el => {
+        if (el._displayAntigo !== undefined) {
+          el.style.display = el._displayAntigo;
         }
-    }, { passive: true });
+      });
+    }, 600);
+  }
+}, { passive: true });
 
     modal.addEventListener('touchmove', (e) => {
         dedosNaTela = e.touches.length;
