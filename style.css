@@ -154,6 +154,17 @@ body.vibe-rosa::after {
   color: #aecdd4;
   margin-bottom: 25px;
   margin-top: -3px;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.hero-titulo, .hero p {
+  animation: abrirDoMeio 1s ease-out forwards;
+}
+
+@keyframes abrirDoMeio {
+  0%   { clip-path: inset(0 50% 0 50%); opacity: 0; }
+  100% { clip-path: inset(0 0% 0 0%);   opacity: 1; }
 }
 
 #device-info .config-box .pet-interativo {
