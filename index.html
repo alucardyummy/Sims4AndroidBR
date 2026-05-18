@@ -533,7 +533,10 @@ function retornarAnimacoesHeavy() {
         if (viewport && viewportOriginal) {
       viewport.setAttribute('content', viewportOriginal);
     }
-          modal.querySelectorAll('video').forEach(v => v.pause());
+          modal.querySelectorAll('video').forEach(v => {
+  v.pause();
+  v.currentTime = 0;
+});
 
         if (modalAtual === id) modalAtual = null;
 
