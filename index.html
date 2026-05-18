@@ -274,6 +274,7 @@
 
     let viewportOriginal = '';
     let estaZoomando = false;
+    let timerLiberarCursor = null;
    
     if (nhawGif) {
       nhawGif.addEventListener('click', () => {
@@ -897,7 +898,11 @@ document.querySelectorAll('.modal-content').forEach(modal => {
     clearTimeout(timerZoom);
     timerZoom = setTimeout(() => {
       zoomAtivo = false;
-      estaZoomando = false;
+
+      clearTimeout(timerLiberarCursor);
+      timerLiberarCursor = setTimeout(() => {
+        estaZoomando = false;
+      }, 800);
 
       if (!document.body.contains(cursor)) {
         document.body.appendChild(cursor);
