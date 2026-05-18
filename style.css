@@ -154,15 +154,6 @@ body.vibe-rosa::after {
   animation: revelarDoMeio 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.5s both;
 }
 
-.hero h1 {
-  font-family: 'LemonMilk', sans-serif;
-  font-size: 2.1rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #fff;
-  text-shadow: 0 0 10px rgba(62, 198, 184, .3);
-}
-
 .hero p {
   color: #aecdd4;
   margin-bottom: 25px;
