@@ -140,7 +140,7 @@ body.vibe-rosa::after {
   height: auto;
   margin-bottom: 10px;
   opacity: 0;
-  animation: surgirDoNada 1s ease-out forwards;
+  animation: surgirDoNada 1s ease-out forwards !important;
 }
 
 .hero h1 {
@@ -157,7 +157,7 @@ body.vibe-rosa::after {
   margin-bottom: 25px;
   margin-top: -3px;
   opacity: 0;
-  animation: surgirDoNada 1s ease-out 0.3s forwards;
+  animation: surgirDoNada 1s ease-out 0.3s forwards !important;
 }
 
 @keyframes surgirDoNada {
