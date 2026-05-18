@@ -151,7 +151,7 @@ body.vibe-rosa::after {
   mask-position: center;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  animation: revelarDoMeio 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.5s both;
+  animation: revelarDoMeio 1.6s cubic-bezier(0.25, 1, 0.5, 1) 0s both;
 }
 
 .hero p {
@@ -170,7 +170,7 @@ body.vibe-rosa::after {
   mask-position: center;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  animation: revelarDoMeio 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.7s both;
+  animation: revelarDoMeio 1.6s cubic-bezier(0.25, 1, 0.5, 1) 0.2s both;
 }
 
 @keyframes revelarDoMeio {
@@ -179,7 +179,7 @@ body.vibe-rosa::after {
     -webkit-mask-size: 0% 100%;
     mask-size: 0% 100%;
   }
-  15% {
+  10% {
     opacity: 1;
   }
   100% {
