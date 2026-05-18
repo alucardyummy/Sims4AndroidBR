@@ -726,7 +726,6 @@ function criarPoeiraLivre(x, y) {
       document.addEventListener('pointermove', (e) => {
     if (arrastandoBarra) {
         clearTimeout(timerEsconder);
-        atualizarTempoPorToque(e);
         
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
@@ -753,6 +752,8 @@ function criarPoeiraLivre(x, y) {
             const preenchida = barraCerta.querySelector('.video-barra-preenchida');
             if (preenchida) preenchida.style.width = (proporcao * 100) + '%';
         }
+        
+        atualizarTempoPorToque(e);
     }
 });
 
