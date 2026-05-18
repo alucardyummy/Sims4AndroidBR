@@ -703,104 +703,77 @@ function criarPoeiraLivre(x, y) {
 
       let arrastandoBarra = false;
 
-      function atualizarTempoPorToque(e) {
-        const rect = barra.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        let proporcao = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-        const tempoAlvo = proporcao * video.duration;
-        if (!isNaN(video.duration)) {
-          previewContainer.style.display = 'block';
-          previewContainer.style.left = (proporcao * 100) + '%';
-          if (!videoGhost.seeking) videoGhost.currentTime = tempoAlvo;
-        }
-      }
+function atualizarTempoPorToque(e) {
+  const rect = barra.getBoundingClientRect();
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  let proporcao = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+  barraPreenchida.style.width = (proporcao * 100) + '%';
+  if (!isNaN(video.duration)) {
+    previewContainer.style.display = 'block';
+    previewContainer.style.left = (proporcao * 100) + '%';
+    if (!videoGhost.seeking) videoGhost.currentTime = proporcao * video.duration;
+  }
+}
 
-      barra.addEventListener('pointerdown', (e) => {
-         arrastandoBarra = true;
-         barra.style.touchAction = 'none';
-         clearTimeout(timerEsconder);
-         atualizarTempoPorToque(e);
-         e.preventDefault(); e.stopPropagation();
-      });
-
-      document.addEventListener('pointermove', (e) => {
-    if (arrastandoBarra) {
-        clearTimeout(timerEsconder);
-        
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        const barras = document.querySelectorAll('.video-barra');
-        
-        let barraCerta = null;
-        let menorDistancia = Infinity;
-        
-        barras.forEach(b => {
-            const rect = b.getBoundingClientRect();
-            if (clientX >= rect.left && clientX <= rect.right && 
-                clientY >= rect.top - 20 && clientY <= rect.bottom + 20) {
-                const distancia = Math.abs(clientY - (rect.top + rect.height / 2));
-                if (distancia < menorDistancia) {
-                    menorDistancia = distancia;
-                    barraCerta = b;
-                }
-            }
-        });
-        
-        if (barraCerta) {
-            const rect = barraCerta.getBoundingClientRect();
-            let proporcao = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-            const preenchida = barraCerta.querySelector('.video-barra-preenchida');
-            if (preenchida) preenchida.style.width = (proporcao * 100) + '%';
-        }
-        
-        atualizarTempoPorToque(e);
-    }
+barra.addEventListener('pointerdown', (e) => {
+  arrastandoBarra = true;
+  barra.style.touchAction = 'none';
+  clearTimeout(timerEsconder);
+  atualizarTempoPorToque(e);
+  e.preventDefault(); e.stopPropagation();
 });
 
-      document.addEventListener('pointerup', (e) => {
+document.addEventListener('pointermove', (e) => {
   if (arrastandoBarra) {
-        arrastandoBarra = false;
-        barra.style.touchAction = '';
-        previewContainer.style.display = 'none';
-        mostrarControles();
-        const rect = barra.getBoundingClientRect();
-        let proporcao = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-     video.currentTime = proporcao * video.duration;
-    }
-  });
+    clearTimeout(timerEsconder);
+    atualizarTempoPorToque(e);
+  }
+});
 
-      barra.addEventListener('touchstart', (e) => {
-        arrastandoBarra = true;
-        clearTimeout(timerEsconder);
-        atualizarTempoPorToque(e);
-        e.stopPropagation();
-      });
+document.addEventListener('pointerup', (e) => {
+  if (arrastandoBarra) {
+    arrastandoBarra = false;
+    barra.style.touchAction = '';
+    previewContainer.style.display = 'none';
+    mostrarControles();
+    const rect = barra.getBoundingClientRect();
+    let proporcao = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    video.currentTime = proporcao * video.duration;
+  }
+});
 
-      document.addEventListener('touchmove', (e) => {
-        if (arrastandoBarra) { clearTimeout(timerEsconder); atualizarTempoPorToque(e); }
-      }, { passive: true });
+barra.addEventListener('touchstart', (e) => {
+  arrastandoBarra = true;
+  clearTimeout(timerEsconder);
+  atualizarTempoPorToque(e);
+  e.stopPropagation();
+});
 
-      document.addEventListener('touchend', (e) => {
-        if (arrastandoBarra) {
-          arrastandoBarra = false;
-          previewContainer.style.display = 'none';
-          mostrarControles();
-          const rect = barra.getBoundingClientRect();
-          const clientX = e.changedTouches ? e.changedTouches[0].clientX : 0;
-          let proporcao = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-          if (!isNaN(video.duration)) video.currentTime = proporcao * video.duration;
-        }
-      });
+document.addEventListener('touchmove', (e) => {
+  if (arrastandoBarra) { clearTimeout(timerEsconder); atualizarTempoPorToque(e); }
+}, { passive: true });
 
-      barra.addEventListener('click', (e) => e.stopPropagation());
-      barra.style.pointerEvents = 'auto';
+document.addEventListener('touchend', (e) => {
+  if (arrastandoBarra) {
+    arrastandoBarra = false;
+    previewContainer.style.display = 'none';
+    mostrarControles();
+    const rect = barra.getBoundingClientRect();
+    const clientX = e.changedTouches ? e.changedTouches[0].clientX : 0;
+    let proporcao = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    if (!isNaN(video.duration)) video.currentTime = proporcao * video.duration;
+  }
+});
 
-      video.removeAttribute('controls');
-      video.controls = false;
+barra.addEventListener('click', (e) => e.stopPropagation());
+barra.style.pointerEvents = 'auto';
 
-      video.addEventListener('timeupdate', () => {
-        barraPreenchida.style.width = (video.currentTime / video.duration) * 100 + '%';
-      });
+video.removeAttribute('controls');
+video.controls = false;
+
+video.addEventListener('timeupdate', () => {
+  barraPreenchida.style.width = (video.currentTime / video.duration) * 100 + '%';
+});
 
       function atualizarBotao() {
         btnCustom.style.backgroundImage = video.paused
