@@ -273,8 +273,6 @@
     let intervalCora;
 
     let viewportOriginal = '';
-    let estaZoomando = false;
-    let timerLiberarCursor = null;
    
     if (nhawGif) {
       nhawGif.addEventListener('click', () => {
@@ -575,7 +573,9 @@ window.addEventListener('pointermove', (e) => {
 });
 
 window.addEventListener('pointerup', (e) => {
-  if (touchMoveu || estaZoomando) return;
+  if (touchMoveu) return;
+  const zoomado = window.visualViewport && window.visualViewport.scale > 1.05;
+  if (zoomado) return;
 
   const target = e.target;
   const elementoInterativo = target.closest('.card') ||
@@ -863,7 +863,6 @@ document.querySelectorAll('.modal-content').forEach(modal => {
 
   if (e.touches.length > 1) {
     zoomAtivo = true;
-    estaZoomando = true;
 
     if (cursor.parentNode) {
       cursor._displayAntigo = cursor.style.display;
@@ -898,11 +897,6 @@ document.querySelectorAll('.modal-content').forEach(modal => {
     clearTimeout(timerZoom);
     timerZoom = setTimeout(() => {
       zoomAtivo = false;
-
-      clearTimeout(timerLiberarCursor);
-      timerLiberarCursor = setTimeout(() => {
-        estaZoomando = false;
-      }, 800);
 
       if (!document.body.contains(cursor)) {
         document.body.appendChild(cursor);
