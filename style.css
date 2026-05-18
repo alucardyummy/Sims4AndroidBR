@@ -988,7 +988,7 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
 
 .video-barra {
   position: absolute;
-  bottom: 8px;
+  bottom: 18px;
   left: 10px; right: 10px;
   height: 4px;
   background: rgba(255, 255, 255, 0.2);
