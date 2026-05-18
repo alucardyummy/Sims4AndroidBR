@@ -728,10 +728,13 @@ function criarPoeiraLivre(x, y) {
         clearTimeout(timerEsconder);
         atualizarTempoPorToque(e);
         
-        const rect = barra.getBoundingClientRect();
+        const barraAtual = document.querySelector('.video-barra:hover') || barra;
+        const rect = barraAtual.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         let proporcao = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-        barraPreenchida.style.width = (proporcao * 100) + '%';
+        
+        const preenchida = barraAtual.querySelector('.video-barra-preenchida');
+        if (preenchida) preenchida.style.width = (proporcao * 100) + '%';
     }
 });
 
