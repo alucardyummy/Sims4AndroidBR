@@ -256,14 +256,7 @@
 
   <button id="backToTop" class="back-to-top">↑</button>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
- 
   <script>
-    NProgress.start();
-  window.addEventListener('load', () => {
-    NProgress.done();
-  });
-   
     const bgMusic = new Audio('audio/Mii Editor - Mii Maker (Wii U) Music.mp3');
     const woohoo = new Audio('audio/woohoo.mp3');
     const nono = new Audio('audio/nono.mp3');
@@ -427,41 +420,32 @@
     document.body.appendChild(muteBtn);
 
     btn.addEventListener('click', () => {
-    hero.classList.add('fade-out');
-    bgMusic.play().catch(() => {});
-    
-    NProgress.start();
-    
-    loaderTransicao.style.display = 'flex';
-    setTimeout(() => loaderTransicao.style.opacity = "1", 50);
-    
-    setTimeout(() => {
-      hero.style.display = 'none';
-      topbar.style.display = 'flex';
-      divisor.style.display = 'block';
-      deviceInfo.style.display = 'block';
-      cards.style.display = 'grid';
-      muteBtn.style.display = 'flex';
-      divisor.offsetHeight;
-      
+      hero.classList.add('fade-out');
+      bgMusic.play().catch(() => {});
+      loaderTransicao.style.display = 'flex';
+      setTimeout(() => loaderTransicao.style.opacity = "1", 50);
       setTimeout(() => {
-        topbar.style.opacity = "1";
-        divisor.style.opacity = "1";
-        deviceInfo.style.opacity = "1";
-        cards.style.opacity = "1";
-        document.body.classList.add('blur-in');
-        
+        hero.style.display = 'none';
+        topbar.style.display = 'flex';
+        divisor.style.display = 'block';
+        deviceInfo.style.display = 'block';
+        cards.style.display = 'grid';
+        muteBtn.style.display = 'flex';
+        divisor.offsetHeight;
         setTimeout(() => {
-          loaderTransicao.style.opacity = "0";
-          setTimeout(() => { 
-            loaderTransicao.style.display = 'none'; 
-            NProgress.done();
-          }, 600);
-        }, 500);
-      }, 300);
-    }, 500);
-  });
-   
+          topbar.style.opacity = "1";
+          divisor.style.opacity = "1";
+          deviceInfo.style.opacity = "1";
+          cards.style.opacity = "1";
+          document.body.classList.add('blur-in');
+          setTimeout(() => {
+            loaderTransicao.style.opacity = "0";
+            setTimeout(() => { loaderTransicao.style.display = 'none'; }, 600);
+          }, 500);
+        }, 300);
+      }, 500);
+    });
+
     muteBtn.addEventListener('click', () => {
       bgMusic.muted = !bgMusic.muted;
       muteBtn.style.opacity = bgMusic.muted ? "0.5" : "1";
@@ -955,4 +939,4 @@ document.querySelectorAll('.modal-content').forEach(modal => {
   <div id="toast-notif" class="toast">Link copiado! &lt;3</div>
 </div>
 </body>
-</html> 
+</html>
