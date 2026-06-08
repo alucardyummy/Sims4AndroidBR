@@ -456,7 +456,6 @@
     document.body.classList.remove('vibe-rosa');
     bgMusic.pause();
     woohoo.pause();
-    document.querySelectorAll('.step-video').forEach(v => v.pause());
   } else if (hero.style.display === 'none' && !bgMusic.muted) {
     if (woohoo.paused) bgMusic.play().catch(() => {});
   }
@@ -485,7 +484,6 @@ function retornarAnimacoesHeavy() {
       if (modalAtual && modalAtual !== id) fecharModalNoUI(modalAtual);
       modalAtual = id;
       modal.classList.add('ativo');
-      modal.querySelectorAll('.video-wrapper').forEach(v => v.style.opacity = '1');
       document.body.style.overflow = 'hidden';
 
       const viewport = document.querySelector('meta[name="viewport"]');
@@ -518,7 +516,6 @@ function retornarAnimacoesHeavy() {
       if (!modal || !modal.classList.contains('ativo')) return;
 
       modal.classList.add('fechando');
-      modal.querySelectorAll('.video-wrapper').forEach(v => v.style.opacity = '0');
 
       requestAnimationFrame(() => { modal.classList.remove('ativo'); });
 
@@ -531,8 +528,6 @@ function retornarAnimacoesHeavy() {
         if (viewport && viewportOriginal) {
       viewport.setAttribute('content', viewportOriginal);
     }
-          modal.querySelectorAll('video').forEach(v => {
-  v.pause();
   v.currentTime = 0;
 });
 
