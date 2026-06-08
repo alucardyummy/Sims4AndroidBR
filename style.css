@@ -1158,4 +1158,12 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
   text-decoration: none;
   font-weight: bold;
   white-space: nowrap;
-} 
+}
+
+.video-wrapper {
+  position: relative;
+}
+
+.video-wrapper iframe.step-video {
+  pointer-events: none;
+}
