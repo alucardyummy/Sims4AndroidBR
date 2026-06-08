@@ -954,7 +954,7 @@ img[src*="nhaw.webp"] {
   border: 1px solid rgba(62, 198, 184, 0.4);
   margin: 10px 0;
   display: block;
-  aspect-ratio: 16/9;
+  aspect-ratio: auto;
 }
 
 #erros-bugs {
