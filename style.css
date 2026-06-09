@@ -1133,7 +1133,6 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
   margin: 0 auto;
   max-width: 250px;
 }
-
 .erros-card-simples {
   display: flex;
   align-items: center;
@@ -1158,14 +1157,4 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
   text-decoration: none;
   font-weight: bold;
   white-space: nowrap;
-}
-
-.video-wrapper {
-  position: relative;
-}
-
-.video-btn-custom,
-.video-barra,
-.video-faixinha-speed {
-  z-index: 2;
 }
