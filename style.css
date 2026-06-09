@@ -292,20 +292,6 @@ body.vibe-rosa::after {
   backface-visibility: hidden;
 }
 
-.modal-divider {
-display: flex;
-justify-content: center;
-margin: 20px 0;
-}
-
-.modal-divider img {
-width: 210px;
-height: auto;
--webkit-user-drag: none;
-user-select: none;
-pointer-events: none;
-}
-
 .grid {
   display: none;
   grid-template-columns: 1fr;
@@ -590,6 +576,20 @@ pointer-events: none;
 }
 
 .modal-content .config-box span { color: #3ec6b8; }
+
+.modal-divider {
+display: flex;
+justify-content: center;
+margin: 20px 0;
+}
+
+.modal-divider img {
+width: 291px;
+height: auto;
+-webkit-user-drag: none;
+user-select: none;
+pointer-events: none;
+}
 
 .btn-fechar {
   position: absolute;
