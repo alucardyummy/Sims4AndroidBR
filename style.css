@@ -1164,17 +1164,6 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
   position: relative;
 }
 
-.video-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  pointer-events: all;
-}
-
 .video-btn-custom,
 .video-barra,
 .video-faixinha-speed {
