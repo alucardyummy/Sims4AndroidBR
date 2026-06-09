@@ -292,6 +292,20 @@ body.vibe-rosa::after {
   backface-visibility: hidden;
 }
 
+.modal-divider {
+display: flex;
+justify-content: center;
+margin: 20px 0;
+}
+
+.modal-divider img {
+width: 32px;
+height: auto;
+-webkit-user-drag: none;
+user-select: none;
+pointer-events: none;
+}
+
 .grid {
   display: none;
   grid-template-columns: 1fr;
