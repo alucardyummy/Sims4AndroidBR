@@ -131,7 +131,8 @@ body.modal-ativo::before {
   max-width: 500px;
   width: 90%;
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
+  margin-top: 40px;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -149,7 +150,8 @@ body.modal-ativo::before {
 
 .hero p {
   color: #aecdd4;
-  margin-bottom: 25px;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
   margin-top: -3px;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -256,20 +258,21 @@ body.modal-ativo::before {
 }
 
 .primary {
-  background: #fff;
-  color: #000;
-  border: none;
-  padding: 12px 30px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(62, 198, 184, 0.3);
+  padding: 14px 40px;
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 50px;
   transition: all 0.2s ease;
   position: relative;
   z-index: 10;
+  letter-spacing: 1px;
 }
 
-.primary:hover  { background: #3ec6b8; box-shadow: 0 0 30px rgba(62, 198, 184, 1); }
+.primary:hover  { background: rgba(62, 198, 184, 0.1); border-color: #3ec6b8; box-shadow: 0 0 20px rgba(62, 198, 184, 0.3); }
 .primary:active { transform: scale(0.90); }
 
 .divisor {
