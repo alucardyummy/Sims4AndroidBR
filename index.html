@@ -3,11 +3,9 @@
 <head>
   <link rel="preload" as="image" href="img/SIMS4ANDROIDBR.webp">
   <link rel="preload" as="image" href="nhaw.webp">
+  <link rel="preload" as="image" href="img/woohoorosudo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <style>
-    body::after { display: none !important; }
-  </style>
   <title>Sims4AndroidBR</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="img/BRsims-fav.webp">
@@ -16,6 +14,7 @@
 <div id="wrapper-principal">
   <div id="loader-overlay"></div>
   <div id="custom-cursor"></div>
+  <img id="vibe-rosa-overlay" src="img/woohoorosudo.png" alt="" draggable="false">
 
   <div id="loader-transicao">
     <img src="img/BRsims-fav.webp" class="pulse-loader proibido" draggable="false">
@@ -378,7 +377,7 @@
           }, 21000);
 
           setTimeout(() => {
-           const fadeOut = setInterval(() => {
+            const fadeOut = setInterval(() => {
               if (woohoo.volume > 0.002) {
                 woohoo.volume = Math.max(0, woohoo.volume - 0.002);
               } else {
@@ -1044,11 +1043,6 @@ function toggleAcordeao(btn) {
     }, 300);
   }
 }
-
-const vibeOverlay = document.createElement('div');
-vibeOverlay.id = 'vibe-rosa-overlay';
-vibeOverlay.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0;transition:opacity 5s ease;background:radial-gradient(circle at center,transparent 0%,rgba(255,0,180,0.08) 40%,rgba(220,0,180,0.22) 100%);';
-document.documentElement.appendChild(vibeOverlay);
 
 const _bodyClassAdd = DOMTokenList.prototype.add;
 const _bodyClassRemove = DOMTokenList.prototype.remove;
