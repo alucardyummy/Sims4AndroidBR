@@ -1,9 +1,9 @@
- @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+ @import  url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
 
 html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -19,7 +19,6 @@ html {
 body {
   font-family: 'Space Grotesk', sans-serif !important;
   background-color: #0a0a0a;
-  isolation: isolate;
   color: #fff;
   cursor: none;
   overflow-x: hidden;
@@ -1171,4 +1170,4 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
   text-decoration: none;
   font-weight: bold;
   white-space: nowrap;
-}
+} 
