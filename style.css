@@ -31,8 +31,8 @@ body::before {
   background: url('img/fundinho.webp') no-repeat center center;
   background-size: cover;
   z-index: -10;
-  transform: none;
-  will-change: auto;
+  transform: translateZ(0) scale(1.02);
+  will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   filter: brightness(1);
@@ -45,16 +45,18 @@ body.modal-ativo::before {
 
 #vibe-rosa-overlay {
   position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
   transition: opacity 2s ease;
-  object-fit: cover;
-  transform: translateZ(0);
-  will-change: opacity;
+  background-image: url('img/woohoorosudo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
