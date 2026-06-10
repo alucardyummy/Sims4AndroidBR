@@ -628,6 +628,7 @@ function retornarAnimacoesHeavy() {
 
     window.addEventListener('popstate', () => {
       if (modalAtual) fecharModalNoUI(modalAtual);
+      else window.scrollTo({ top: 0, behavior: 'instant' });
     });
 
     async function copiarLink() {
