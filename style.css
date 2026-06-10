@@ -822,7 +822,7 @@ img[src*="nhaw.webp"] {
   user-select: none;
   opacity: 0.9;
   image-rendering: pixelated;
-  animation: subirLivremente 7s linear forwards;
+  animation: subirLivremente 13s linear forwards;
 }
 
 @keyframes subirLivremente {
