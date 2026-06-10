@@ -427,7 +427,9 @@
   coracao.style.width = `${size}px`;
   coracao.style.height = `${size}px`;
   coracao.style.left = Math.random() * 100 + 'vw';
+  coracao.style.top = (document.body.scrollHeight + size) + 'px';
   coracao.style.setProperty('--random-x', (Math.random() - 0.5) * 200 + 'px');
+  coracao.style.setProperty('--subir-total', `-${document.body.scrollHeight + size * 2}px`);
 
   document.body.appendChild(coracao);
 
