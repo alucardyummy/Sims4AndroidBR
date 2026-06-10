@@ -811,8 +811,7 @@ img[src*="nhaw.webp"] {
 }
 
 .heart-particle {
-  position: fixed;
-  bottom: -10vh;
+  position: absolute;
   background-image: url('img/coracoes-pixel.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -828,7 +827,7 @@ img[src*="nhaw.webp"] {
 @keyframes subirLivremente {
   0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
   10%  { opacity: 0.8; }
-  100% { transform: translateY(-130vh) translateX(var(--random-x)) rotate(15deg); opacity: 0; }
+  100% { transform: translateY(var(--subir-total)) translateX(var(--random-x)) rotate(15deg); opacity: 0; }
 }
 
 .pop-bubble-original {
