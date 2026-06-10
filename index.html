@@ -6,8 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
-    html { overscroll-behavior-y: auto !important; }
-    body { isolation: auto !important; overscroll-behavior-y: auto !important; }
+    body::after { display: none !important; }
   </style>
   <title>Sims4AndroidBR</title>
   <link rel="stylesheet" href="style.css">
@@ -372,7 +371,6 @@
      }, 200);
    }, 100);
 
-          // Rosa começa a sumir 2s antes do fim do áudio
           setTimeout(() => {
             document.body.classList.remove('vibe-rosa');
             clearInterval(intervalCora);
@@ -380,15 +378,13 @@
           }, 21000);
 
           setTimeout(() => {
-            // Fade out suave do woohoo
-            const fadeOut = setInterval(() => {
+           const fadeOut = setInterval(() => {
               if (woohoo.volume > 0.002) {
                 woohoo.volume = Math.max(0, woohoo.volume - 0.002);
               } else {
                 woohoo.volume = 0;
                 woohoo.pause();
                 clearInterval(fadeOut);
-                // Fade in suave do bgMusic
                 bgMusic.volume = 0;
                 bgMusic.play().catch(() => {});
                 const fadeIn = setInterval(() => {
@@ -550,7 +546,6 @@ function retornarAnimacoesHeavy() {
       modal.querySelectorAll('.video-wrapper').forEach(v => v.style.opacity = '1');
       document.body.style.overflow = 'hidden';
 
-      // Preload dos vídeos do modal ao abrir
       modal.querySelectorAll('video.step-video').forEach(v => {
         v.preload = 'auto';
         v.load();
@@ -570,7 +565,6 @@ function retornarAnimacoesHeavy() {
         setTimeout(() => element.style.transform = '', 100);
       }
 
-      // Fechar ao clicar fora do modal-content
       const fecharFora = (e) => {
         if (e.target === modal) {
           modal.removeEventListener('pointerup', fecharFora);
@@ -595,7 +589,6 @@ function retornarAnimacoesHeavy() {
 
       modal.classList.add('fechando');
 
-      // Esconde controles customizados imediatamente
       modal.querySelectorAll('.video-btn-custom, .video-barra, .video-faixinha-speed').forEach(el => {
         el.classList.remove('visivel');
       });
@@ -1018,7 +1011,6 @@ function toggleAcordeao(btn) {
   const corpo = item.querySelector('.acordeao-corpo');
   const aberto = item.classList.contains('aberto');
 
-  // Fecha todos os abertos, pausando e resetando vídeos
   document.querySelectorAll('.acordeao-item.aberto').forEach(i => {
     i.classList.remove('aberto');
     const c = i.querySelector('.acordeao-corpo');
@@ -1034,7 +1026,6 @@ function toggleAcordeao(btn) {
   if (!aberto) {
     item.classList.add('aberto');
 
-    // Preload dos vídeos ao abrir
     corpo.querySelectorAll('video').forEach(v => {
       v.preload = 'auto';
       v.load();
@@ -1054,7 +1045,6 @@ function toggleAcordeao(btn) {
   }
 }
 
-// Fix vibe-rosa: overlay appendado no <html> pra escapar do isolation:isolate do body
 const vibeOverlay = document.createElement('div');
 vibeOverlay.id = 'vibe-rosa-overlay';
 vibeOverlay.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0;transition:opacity 5s ease;background:radial-gradient(circle at center,transparent 0%,rgba(255,0,180,0.08) 40%,rgba(220,0,180,0.22) 100%);';
