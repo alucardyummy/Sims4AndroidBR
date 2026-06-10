@@ -369,15 +369,18 @@
      }, 200);
    }, 100);
 
+          // Rosa começa a sumir 5s antes do fim
           setTimeout(() => {
+            document.body.classList.remove('vibe-rosa');
             clearInterval(intervalCora);
             easterEggAtivo = false;
-            document.body.classList.remove('vibe-rosa');
+          }, 18000);
 
+          setTimeout(() => {
             // Fade out suave do woohoo
             const fadeOut = setInterval(() => {
-              if (woohoo.volume > 0.01) {
-                woohoo.volume = Math.max(0, woohoo.volume - 0.005);
+              if (woohoo.volume > 0.002) {
+                woohoo.volume = Math.max(0, woohoo.volume - 0.002);
               } else {
                 woohoo.volume = 0;
                 woohoo.pause();
@@ -394,7 +397,7 @@
                   }
                 }, 50);
               }
-            }, 50);
+            }, 80);
           }, 23000);
         }
       });
@@ -1019,32 +1022,37 @@ function toggleAcordeao(btn) {
 
   if (!aberto) {
     item.classList.add('aberto');
-    // Usa um frame extra para garantir que o conteúdo já foi renderizado
-    requestAnimationFrame(() => {
-      corpo.style.maxHeight = corpo.scrollHeight + 'px';
-      // Recalcula após os vídeos montarem os wrappers customizados
-      setTimeout(() => {
-        corpo.style.maxHeight = corpo.scrollHeight + 'px';
-      }, 100);
-    });
+    corpo.style.maxHeight = 'none';
+    const alturaReal = corpo.scrollHeight;
+    corpo.style.maxHeight = '0px';
+    corpo.offsetHeight; // força reflow
+    corpo.style.maxHeight = alturaReal + 'px';
+    // recalcula depois que wrappers de vídeo forem montados
+    setTimeout(() => { corpo.style.maxHeight = corpo.scrollHeight + 'px'; }, 200);
   }
 }
 
-// Fix vibe-rosa: cria overlay fixo fora do isolation: isolate do body
+// Fix vibe-rosa: overlay fixo independente do isolation:isolate do body
 const vibeOverlay = document.createElement('div');
 vibeOverlay.id = 'vibe-rosa-overlay';
-vibeOverlay.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:10;opacity:0;transition:opacity 2s ease;background:radial-gradient(circle at center,transparent 0%,rgba(255,0,222,0.15) 40%,rgba(255,0,222,0.45) 100%);';
+vibeOverlay.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0;transition:opacity 3s ease;background:radial-gradient(circle at center,transparent 0%,rgba(255,0,180,0.08) 40%,rgba(220,0,180,0.22) 100%);';
 document.body.appendChild(vibeOverlay);
 
-const _addClassOrig = document.body.classList.add.bind(document.body.classList);
-const _removeClassOrig = document.body.classList.remove.bind(document.body.classList);
-document.body.classList.add = function(...args) {
-  _addClassOrig(...args);
-  if (args.includes('vibe-rosa')) vibeOverlay.style.opacity = '1';
+const _bodyClassAdd = DOMTokenList.prototype.add;
+const _bodyClassRemove = DOMTokenList.prototype.remove;
+DOMTokenList.prototype.add = function(...args) {
+  _bodyClassAdd.apply(this, args);
+  if (this === document.body.classList && args.includes('vibe-rosa')) {
+    const el = document.getElementById('vibe-rosa-overlay');
+    if (el) el.style.opacity = '1';
+  }
 };
-document.body.classList.remove = function(...args) {
-  _removeClassOrig(...args);
-  if (args.includes('vibe-rosa')) vibeOverlay.style.opacity = '0';
+DOMTokenList.prototype.remove = function(...args) {
+  _bodyClassRemove.apply(this, args);
+  if (this === document.body.classList && args.includes('vibe-rosa')) {
+    const el = document.getElementById('vibe-rosa-overlay');
+    if (el) el.style.opacity = '0';
+  }
 };
 
   </script>
