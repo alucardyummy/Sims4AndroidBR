@@ -428,11 +428,12 @@
   coracao.style.height = `${size}px`;
   coracao.style.left = Math.random() * 100 + 'vw';
   coracao.style.setProperty('--random-x', (Math.random() - 0.5) * 200 + 'px');
-  coracao.style.setProperty('--duracao', (Math.random() * 6 + 11) + 's');
+  const duracaoMs = (Math.random() * 6 + 11) * 1000;
+  coracao.style.setProperty('--duracao', duracaoMs + 'ms');
 
   document.body.appendChild(coracao);
 
-  const tempoVida = (Math.random() * 0.25 + 0.40) * 7000;
+  const tempoVida = duracaoMs * (Math.random() * 0.2 + 0.5);
 
   setTimeout(() => {
     const rect = coracao.getBoundingClientRect();
