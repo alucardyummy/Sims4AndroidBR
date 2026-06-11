@@ -435,7 +435,7 @@
 
   document.body.appendChild(coracao);
 
-  const yExplode = window.innerHeight * (Math.random() * 0.75 + 0.10);
+  const yExplode = Math.random() < 0.3 ? -999 : window.innerHeight * (Math.random() * 0.90 + 0.02);
   const sorteio = Math.random();
   let explodiu = false;
 
