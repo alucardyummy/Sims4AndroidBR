@@ -433,7 +433,7 @@
 
   document.body.appendChild(coracao);
 
-  const tempoVida = duracaoMs * (Math.random() * 0.08 + 0.08);
+  const tempoVida = duracaoMs * (Math.random() * 0.7 + 0.3);
 
   setTimeout(() => {
     const rect = coracao.getBoundingClientRect();
@@ -441,14 +441,14 @@
     const y = rect.top + size / 2;
     const sorteio = Math.random();
 
-    if (y > 0 && y < window.innerHeight) {
-      if (sorteio < 0.5) {
-        origemExplosaoPop(x, y);
-      } else {
-        criarExplosaoFumaca(x, y);
-      }
+    if (sorteio < 0.5) {
+      origemExplosaoPop(x, y);
+      coracao.remove();
+
+    } else {
+      criarExplosaoFumaca(x, y);
+      coracao.remove();
     }
-    coracao.remove();
   }, tempoVida);
     }
    
