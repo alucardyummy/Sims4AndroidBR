@@ -435,22 +435,30 @@
 
   document.body.appendChild(coracao);
 
-  const tempoVida = duracaoMs * (Math.random() * 0.7 + 0.3);
+  const yExplode = window.innerHeight * (Math.random() * 0.75 + 0.10);
+  const sorteio = Math.random();
+  let explodiu = false;
+
+  function checar() {
+    if (explodiu) return;
+    const rect = coracao.getBoundingClientRect();
+    if (rect.top <= yExplode) {
+      explodiu = true;
+      const x = rect.left + size / 2;
+      const y = rect.top + size / 2;
+      if (sorteio < 0.5) origemExplosaoPop(x, y);
+      else criarExplosaoFumaca(x, y);
+      coracao.remove();
+      return;
+    }
+    requestAnimationFrame(checar);
+  }
+
+  requestAnimationFrame(checar);
 
   setTimeout(() => {
-    const rect = coracao.getBoundingClientRect();
-    const x = rect.left + size / 2;
-    const y = rect.top + size / 2;
-    const sorteio = Math.random();
-
-    if (sorteio < 0.5) {
-      origemExplosaoPop(x, y);
-      coracao.remove();
-    } else {
-      criarExplosaoFumaca(x, y);
-      coracao.remove();
-    }
-  }, tempoVida);
+    if (!explodiu) { explodiu = true; coracao.remove(); }
+  }, duracaoMs + 500);
     }
    
     function origemExplosaoPop(x, y) {
