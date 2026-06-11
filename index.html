@@ -428,6 +428,8 @@
   coracao.style.height = `${size}px`;
   coracao.style.left = Math.random() * 100 + 'vw';
   coracao.style.setProperty('--random-x', (Math.random() - 0.5) * 200 + 'px');
+  const alturaTotal = document.body.scrollHeight + window.innerHeight;
+  coracao.style.setProperty('--subir-total', `-${alturaTotal}px`);
   const duracaoMs = (Math.random() * 6 + 11) * 1000;
   coracao.style.setProperty('--duracao', duracaoMs + 'ms');
 
@@ -444,7 +446,6 @@
     if (sorteio < 0.5) {
       origemExplosaoPop(x, y);
       coracao.remove();
-
     } else {
       criarExplosaoFumaca(x, y);
       coracao.remove();
