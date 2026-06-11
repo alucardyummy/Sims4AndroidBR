@@ -371,7 +371,7 @@
           woohoo.play().catch(() => {});
           intervalCora = setInterval(() => {
       if (easterEggAtivo) criarUmCoracao();
-      }, 200);
+      }, 600);
      }, 200);
    }, 100);
 
@@ -428,6 +428,7 @@
   coracao.style.height = `${size}px`;
   coracao.style.left = Math.random() * 100 + 'vw';
   coracao.style.setProperty('--random-x', (Math.random() - 0.5) * 200 + 'px');
+  coracao.style.setProperty('--duracao', (Math.random() * 6 + 11) + 's');
 
   document.body.appendChild(coracao);
 
