@@ -803,7 +803,7 @@ body.modal-aberto { overflow: hidden; touch-action: none; }
 }
 
 .knd {
-  color: #3ec6b8;
+  color: #3ec6b8 !important;
 }
 
 img[src*="nhaw.webp"] {
