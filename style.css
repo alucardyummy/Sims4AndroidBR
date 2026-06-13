@@ -802,8 +802,8 @@ body.modal-aberto { overflow: hidden; touch-action: none; }
   margin-top: 16px;
 }
 
-.knd {
-  color: #3ec6b8 !important;
+* .knd, .knd, i .knd, i > .knd {
+  color: #3ec6b8 !important;
 }
 
 img[src*="nhaw.webp"] {
