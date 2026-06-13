@@ -563,9 +563,7 @@
   document.body.style.setProperty('--anim-play-state', 'paused');
   document.body.classList.add('modal-ativo');
 
-  document.querySelectorAll('.video-preview-container').forEach(v => {
-    v.style.display = 'none';
-  });
+
 }
 
 function retornarAnimacoesHeavy() {
@@ -782,11 +780,9 @@ function criarPoeiraLivre(x, y) {
       barra.appendChild(barraPreenchida);
       wrapper.appendChild(barra);
 
-      const previewContainer = document.createElement('div');
-      previewContainer.className = 'video-preview-container';
-      const previewCanvas = document.createElement('canvas');
-      previewContainer.appendChild(previewCanvas);
-      wrapper.appendChild(previewContainer);
+      const tempoTooltip = document.createElement('div');
+      tempoTooltip.className = 'video-tempo-tooltip';
+      wrapper.appendChild(tempoTooltip);
 
       const faixaVelocidade = document.createElement('div');
       faixaVelocidade.className = 'video-faixinha-speed';
@@ -795,26 +791,13 @@ function criarPoeiraLivre(x, y) {
       faixaVelocidade.appendChild(textoFaixa);
       wrapper.appendChild(faixaVelocidade);
 
-      const videoGhost = document.createElement('video');
-      videoGhost.src = video.querySelector('source').src;
-      videoGhost.muted = true;
-      videoGhost.preload = 'auto';
-      videoGhost.playsInline = true;
-      videoGhost.crossOrigin = "anonymous";
-      videoGhost.load();
-
-      const ctx = previewCanvas.getContext('2d', { alpha: false });
-      previewCanvas.width = 120;
-      previewCanvas.height = 68;
-
-      videoGhost.addEventListener('seeked', () => {
-
-        if (previewContainer.style.display !== 'none') {
-          ctx.drawImage(videoGhost, 0, 0, previewCanvas.width, previewCanvas.height);
-        }
-      });
-
       let arrastandoBarra = false;
+
+function formatarTempo(s) {
+  const m = Math.floor(s / 60);
+  const seg = Math.floor(s % 60);
+  return m + ':' + String(seg).padStart(2, '0');
+}
 
 function atualizarTempoPorToque(e) {
   const rect = barra.getBoundingClientRect();
@@ -822,9 +805,9 @@ function atualizarTempoPorToque(e) {
   let proporcao = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
   barraPreenchida.style.width = (proporcao * 100) + '%';
   if (!isNaN(video.duration)) {
-    previewContainer.style.display = 'block';
-    previewContainer.style.left = (proporcao * 100) + '%';
-    if (!videoGhost.seeking) videoGhost.currentTime = proporcao * video.duration;
+    const tempoAtual = proporcao * video.duration;
+    tempoTooltip.textContent = formatarTempo(tempoAtual);
+    tempoTooltip.style.display = 'block';
   }
 }
 
@@ -847,7 +830,7 @@ document.addEventListener('pointerup', (e) => {
   if (arrastandoBarra) {
     arrastandoBarra = false;
     barra.style.touchAction = '';
-    previewContainer.style.display = 'none';
+    tempoTooltip.style.display = 'none';
     mostrarControles();
     const rect = barra.getBoundingClientRect();
     let proporcao = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
@@ -869,7 +852,7 @@ document.addEventListener('touchmove', (e) => {
 document.addEventListener('touchend', (e) => {
   if (arrastandoBarra) {
     arrastandoBarra = false;
-    previewContainer.style.display = 'none';
+    tempoTooltip.style.display = 'none';
     mostrarControles();
     const rect = barra.getBoundingClientRect();
     const clientX = e.changedTouches ? e.changedTouches[0].clientX : 0;
