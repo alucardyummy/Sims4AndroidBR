@@ -658,17 +658,6 @@ video {
   user-select: none;
 }
 
-#loader-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: url('img/sua-imagem.webp') no-repeat center center;
-  background-size: cover;
-  z-index: 999999;
-  pointer-events: none;
-  animation: sumirCortina 1.5s ease-in-out forwards;
-}
-
 @keyframes sumirCortina {
   0%   { opacity: 1; }
   30%  { opacity: 1; }
