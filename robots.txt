@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sims4androidbr.vercel.app/sitemap.xml
