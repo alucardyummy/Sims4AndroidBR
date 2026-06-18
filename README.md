@@ -1,23 +1,27 @@
 # Sims4AndroidBR
 
 ## Visão Geral
-O **Sims4AndroidBR** é um site guia que ensina como jogar **The Sims 4 no Android** utilizando o emulador **GameHub**.  
-Ele reúne instruções passo a passo, vídeos demonstrativos, links de download e dicas de configuração para oferecer uma experiência clara e acessível para fãs do jogo que não possuem PC ou apenas querem jogar pelo celular.
+O **Sims4AndroidBR** é um guia independente que ensina como jogar o **The Sims 4 (jogo oficial da EA/Maxis)** em dispositivos Android utilizando o emulador **GameHub**.  
+O projeto não é afiliado à EA/Maxis, mas mostra como rodar o jogo oficial no celular de forma prática.
 
 ## Conteúdo
 - Passo a passo para baixar os aplicativos necessários  
 - Instalação do jogo base ou versão completa  
 - Ajustes de desempenho no GameHub  
-- Tutorial para aplicar tradução em português  
+- Tutorial para aplicar tradução em português (PT-BR)  
 - Instalação de mods e conteúdo personalizado (CC e WickedWhims)  
-- Tutorial de como colocar expansões
-- Layouts feitos pensados nos botões mais usados durante a gameplay
-- Tutorial de como deixar o jogo em PT-BR
+- Como adicionar expansões  
+- Layouts otimizados para jogabilidade no celular  
+- Guia para deixar o jogo totalmente em PT-BR  
 
 ## Requisitos
-- Dispositivos Android de no mínimo 64gb-128gb e 6 de ram, com espaço livre (20–30 GB recomendados)  
+- Dispositivo Android com **64–128 GB de armazenamento** e **mínimo 6 GB de RAM**  
+- Espaço livre recomendado: **20–30 GB**  
 - Emulador **GameHub** instalado  
-- Aplicativos auxiliares: **1DM**, **ZArchiver**, **Cx Explorador**  
+- Aplicativos auxiliares: **1DM, ZArchiver, Cx Explorador**
 
 ## Objetivo
-Facilitar a vida de quem quer jogar **The Sims 4 no Android**, oferecendo um site direto, acessível e cheio de soluções práticas.
+Facilitar a vida de quem deseja jogar o **The Sims 4 oficial** no Android, oferecendo instruções claras, acessíveis e práticas.
+
+## Aviso Legal
+Este guia é um projeto independente e não possui vínculo com a EA ou Maxis. O conteúdo descrito é apenas um tutorial para emular o jogo oficial em dispositivos Android.
