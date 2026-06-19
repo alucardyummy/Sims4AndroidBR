@@ -21,7 +21,7 @@ O projeto não é afiliado à EA/Maxis, mas mostra como rodar o jogo no celular 
 - Aplicativos auxiliares: **1DM, ZArchiver, Cx Explorador**
 
 ## Objetivo
-Facilitar a vida de quem deseja jogar o **The Sims 4 oficial** no Android, oferecendo instruções claras, acessíveis e práticas.
+Facilitar a vida de quem deseja jogar o **The Sims 4** no Android, oferecendo instruções claras, acessíveis e práticas.
 
 ## Aviso Legal
 Este guia é um projeto independente e não possui vínculo com a EA ou Maxis. O conteúdo descrito é apenas um tutorial para emular o jogo em dispositivos Android.
