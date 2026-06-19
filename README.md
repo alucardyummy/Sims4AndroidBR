@@ -1,8 +1,8 @@
 # Sims4AndroidBR
 
 ## Visão Geral
-O **Sims4AndroidBR** é um guia independente que ensina como jogar o **The Sims 4 (jogo oficial da EA/Maxis)** em dispositivos Android utilizando o emulador **GameHub**.  
-O projeto não é afiliado à EA/Maxis, mas mostra como rodar o jogo oficial no celular de forma prática.
+O **Sims4AndroidBR** é um guia independente que ensina como jogar o **The Sims 4** em dispositivos Android utilizando o emulador **GameHub**.  
+O projeto não é afiliado à EA/Maxis, mas mostra como rodar o jogo no celular de forma prática.
 
 ## Conteúdo
 - Passo a passo para baixar os aplicativos necessários  
@@ -24,4 +24,4 @@ O projeto não é afiliado à EA/Maxis, mas mostra como rodar o jogo oficial no 
 Facilitar a vida de quem deseja jogar o **The Sims 4 oficial** no Android, oferecendo instruções claras, acessíveis e práticas.
 
 ## Aviso Legal
-Este guia é um projeto independente e não possui vínculo com a EA ou Maxis. O conteúdo descrito é apenas um tutorial para emular o jogo oficial em dispositivos Android.
+Este guia é um projeto independente e não possui vínculo com a EA ou Maxis. O conteúdo descrito é apenas um tutorial para emular o jogo em dispositivos Android.
