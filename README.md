@@ -1,3 +1,4 @@
+<div align="center">
 <p align="center">
 	<img src="img/SIMS4ANDROIDBR.webp" width="466" height="210" alt="logo do Sims4AndroidBR" />
 </p>
@@ -29,3 +30,4 @@ Facilitar a vida de quem deseja jogar o **The Sims 4** no Android, oferecendo in
 
 ## Aviso Legal
 Este guia é um projeto independente e não possui vínculo com a EA ou Maxis. O conteúdo descrito é apenas um tutorial para emular o jogo em dispositivos Android.
+</div>
