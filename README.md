@@ -1,3 +1,7 @@
+<p align="center">
+	<img src="img/SIMS4ANDROIDBR.webp" width="243" height="120" alt="logo icon Sims4AndroidBR" />
+</p>
+
 # Sims4AndroidBR
 
 ## Visão Geral
