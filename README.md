@@ -2,6 +2,8 @@
 	<img src="img/SIMS4ANDROIDBR.webp" width="466" height="210" alt="logo do Sims4AndroidBR" />
 </p>
 
+---
+
 ## Visão Geral
 O **Sims4AndroidBR** é um guia independente que ensina como jogar o **The Sims 4** em dispositivos Android utilizando o emulador **GameHub**.  
 O projeto não é afiliado à EA/Maxis, mas mostra como rodar o jogo no celular de forma prática.
