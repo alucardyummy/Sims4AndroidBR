@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="img/SIMS4ANDROIDBR.webp" width="466" height="210" alt="logo icon Sims4AndroidBR" />
+	<img src="img/SIMS4ANDROIDBR.webp" width="466" height="210" alt="logo do Sims4AndroidBR" />
 </p>
 
 # Sims4AndroidBR
