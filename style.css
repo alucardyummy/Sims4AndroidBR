@@ -24,6 +24,16 @@ body {
   overflow-x: hidden;
 }
 
+::selection {
+  background: #23544d;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #23544d;
+  color: #fff;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -558,11 +568,6 @@ body.modal-ativo::before {
 }
 
 .modal-codigo-compartilhamento { text-align: center; margin: 15px 0; }
-.modal-codigo-compartilhamento::selection,
-.modal-codigo-compartilhamento *::selection {
-  background: #23544d;
-  color: #fff;
-}
 .destaque-ciano-italico { color: #3ec6b8; font-style: italic; }
 
 .modal-subtitulo { color: #3ec6b8; font-weight: bold; margin-top: 15px; }
