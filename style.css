@@ -1169,12 +1169,13 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
 }
 .tiktok-icon {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   fill: currentColor;
+  margin-top: 1px;
 }
 .erros-card-simples {
   display: flex;
