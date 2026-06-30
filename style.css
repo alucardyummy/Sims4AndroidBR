@@ -210,7 +210,7 @@ body.modal-ativo::before {
 
 @media (max-width: 768px) {
   #device-info .config-box { padding: 20px; }
-  body::before { background-attachment: scroll; }
+  #wrapper-principal, body::before { background-attachment: scroll; }
 }
 
 @media (min-width: 1024px) {
@@ -232,6 +232,7 @@ body.modal-ativo::before {
   .card { min-height: 250px; }
   .topbar { padding-top: 40px; padding-bottom: 10px; }
   .logo img { height: 100px; }
+  #wrapper-principal { background-attachment: fixed; }
 }
 
 #device-info .config-box {
@@ -711,9 +712,10 @@ video {
 }
 
 .footer-acido {
-  margin-top: 20px;
-  padding: 0;
+  margin-top: 50px;
+  padding: 30px 20px;
   text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
 }
@@ -931,6 +933,8 @@ img[src*="nhaw.webp"] {
 #wrapper-principal {
   min-height: 100vh;
   width: 100%;
+  background: url('img/fundinho.webp') no-repeat center center;
+  background-size: cover;
 }
 
 #wrapper-principal.tremidinha-ativa {
