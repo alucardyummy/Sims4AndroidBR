@@ -712,10 +712,9 @@ video {
 }
 
 .footer-acido {
-  margin-top: 50px;
-  padding: 30px 20px;
+  margin-top: 20px;
+  padding: 0;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
 }
