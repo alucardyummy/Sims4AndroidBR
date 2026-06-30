@@ -616,6 +616,31 @@ pointer-events: none;
 .btn-download:active  { transform: scale(0.97); }
 .btn-wicked           { background: #eb34e8; color: #fff; }
 
+.modal-aviso {
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.modal-aviso .destaque {
+  color: #3ec6b8;
+  font-weight: bold;
+}
+
+.modal-aviso .destaque-italico {
+  color: #3ec6b8;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.modal-aviso .negrito-italico {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.modal-aviso b {
+  font-weight: bold;
+}
+
 .proibido {
   user-select: none;
   -webkit-user-drag: none;
@@ -1139,6 +1164,17 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
 .erros-btn-contato {
   margin: 0 auto;
   max-width: 250px;
+}
+.erros-btn-tiktok {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.tiktok-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 .erros-card-simples {
   display: flex;
