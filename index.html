@@ -667,6 +667,7 @@ function retornarAnimacoesHeavy() {
       modal.querySelectorAll('video.step-video').forEach(v => {
         v.preload = 'auto';
         v.load();
+        if (v._mostrarControles) v._mostrarControles();
       });
 
       const viewport = document.querySelector('meta[name="viewport"]');
@@ -874,6 +875,20 @@ function criarPoeiraLivre(x, y) {
       faixaVelocidade.appendChild(textoFaixa);
       wrapper.appendChild(faixaVelocidade);
 
+      const seekIndicador = document.createElement('div');
+      seekIndicador.className = 'video-seek-indicator';
+      wrapper.appendChild(seekIndicador);
+
+      let timerSeekIndicador = null;
+      function mostrarSeekIndicador(texto, lado) {
+        seekIndicador.textContent = texto;
+        seekIndicador.className = 'video-seek-indicator lado-' + lado + ' visivel';
+        clearTimeout(timerSeekIndicador);
+        timerSeekIndicador = setTimeout(() => {
+          seekIndicador.classList.remove('visivel');
+        }, 500);
+      }
+
       let arrastandoBarra = false;
 
 function formatarTempo(s) {
@@ -983,6 +998,9 @@ video.addEventListener('timeupdate', () => {
       btnCustom.classList.add('visivel');
       barra.classList.add('visivel');
 
+      video._mostrarControles = mostrarControles;
+      video._esconderControlesAgora = esconderControlesAgora;
+
       video.addEventListener('play', () => { atualizarBotao(); mostrarControles(); });
       video.addEventListener('pause', () => { atualizarBotao(); mostrarControles(); });
 
@@ -1008,6 +1026,31 @@ video.addEventListener('timeupdate', () => {
       });
 
       btnCustom.style.pointerEvents = 'auto';
+
+      video.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        pressionando = false;
+        if (timerPressionar) clearTimeout(timerPressionar);
+        video.playbackRate = 1.0;
+
+        const rect = video.getBoundingClientRect();
+        const origemX = e.clientX !== undefined && e.clientX !== 0
+          ? e.clientX
+          : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : rect.left + rect.width / 2);
+        const x = origemX - rect.left;
+        const metade = rect.width / 2;
+
+        if (x < metade) {
+          video.currentTime = Math.max(0, video.currentTime - 5);
+          mostrarSeekIndicador('-5s', 'esquerda');
+        } else {
+          const novoTempo = video.currentTime + 5;
+          video.currentTime = isNaN(video.duration) ? novoTempo : Math.min(video.duration, novoTempo);
+          mostrarSeekIndicador('+5s', 'direita');
+        }
+        mostrarControles();
+      });
 
       video.addEventListener('touchstart', (e) => {
         const rect = video.getBoundingClientRect();
