@@ -558,6 +558,11 @@ body.modal-ativo::before {
 }
 
 .modal-codigo-compartilhamento { text-align: center; margin: 15px 0; }
+.modal-codigo-compartilhamento::selection,
+.modal-codigo-compartilhamento *::selection {
+  background: #23544d;
+  color: #fff;
+}
 .destaque-ciano-italico { color: #3ec6b8; font-style: italic; }
 
 .modal-subtitulo { color: #3ec6b8; font-weight: bold; margin-top: 15px; }
@@ -1084,6 +1089,27 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
   text-shadow: 0 1px 2px rgba(0,0,0,0.8);
   user-select: none;
 }
+
+.video-seek-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 11;
+  white-space: nowrap;
+}
+
+.video-seek-indicator.lado-esquerda { left: 16px; }
+.video-seek-indicator.lado-direita { right: 16px; }
+.video-seek-indicator.visivel { opacity: 1; }
 
 #erros-bugs {
   margin: 40px 20px;
