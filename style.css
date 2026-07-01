@@ -473,8 +473,6 @@ body.modal-ativo::before {
   background: rgba(0, 0, 0, 0.72);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  will-change: opacity;
-  transform: translateZ(0);
 }
 
 .modal-overlay::before {
@@ -486,8 +484,6 @@ body.modal-ativo::before {
   z-index: -1;
   pointer-events: none;
   contain: strict;
-  will-change: transform;
-  transform: translateZ(0);
 }
 
 .modal-overlay.ativo {
