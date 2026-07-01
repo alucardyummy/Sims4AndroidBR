@@ -715,6 +715,7 @@ function retornarAnimacoesHeavy() {
       requestAnimationFrame(() => { modal.classList.remove('ativo'); });
 
       const limparAposFechar = (e) => {
+        if (e.target !== modal) return;
         if (e.propertyName === 'opacity') {
           modal.classList.remove('fechando');
           document.body.style.overflow = 'auto';
