@@ -575,7 +575,7 @@ body.modal-ativo::before {
 .modal-texto span { color: #3ec6b8; }
 .modal-legenda   { text-align: center; margin-top: 15px; font-weight: bold; }
 .modal-lista     { margin: 10px 20px; font-size: 0.9rem; color: #ccc; }
-.modal-divisor   { width: 100%; height: 40px; }
+.modal-divisor { width: 100%; height: 15px; }
 
 .modal-img {
   width: 100%;
