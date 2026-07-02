@@ -521,7 +521,7 @@ body.modal-ativo::before {
 }
 
 .modal-content h2 { color: #3ec6b8; margin-bottom: 15px; }
-.modal-content h3 { color: #fff; font-size: 1rem; margin: 7px 0 7px 0; text-align: center; }
+.modal-content h3 { color: #fff; font-size: 1rem; margin: 7px 0 7px 0; }
 
 .modal-codigo {
   display: block;
