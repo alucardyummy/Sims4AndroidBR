@@ -523,18 +523,6 @@ body.modal-ativo::before {
 .modal-content h2 { color: #3ec6b8; margin-bottom: 15px; }
 .modal-content h3 { color: #fff; font-size: 1rem; margin: 7px 0 7px 0; }
 
-.modal-codigo {
-  display: block;
-  background: #111;
-  padding: 10px;
-  margin: 10px 0 20px 0;
-  font-size: 0.8rem;
-  border-radius: 8px;
-  border: 1px solid rgba(62, 198, 184, 0.2);
-  color: #3ec6b8;
-  word-break: break-all;
-}
-
 .codigo-valor {
   display: inline-block;
   margin-top: 8px;
@@ -572,7 +560,7 @@ body.modal-ativo::before {
   margin-top: 15px;
 }
 
-.modal-codigo-compartilhamento { text-align: center; margin: 15px 0; }
+.modal-codigo-compartilhamento { text-align: center; margin: 15px 0; font-size: 0.9rem; }
 .destaque-ciano-italico { color: #3ec6b8; font-style: italic; }
 
 .modal-subtitulo { color: #3ec6b8; font-weight: bold; margin-top: 15px; }
