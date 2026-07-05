@@ -535,6 +535,11 @@ body.modal-ativo::before {
   word-break: break-all;
 }
 
+.codigo-valor {
+  display: inline-block;
+  margin-top: 8px;
+}
+
 .modal-dica {
   background: rgba(62, 198, 184, 0.1);
   padding: 10px;
