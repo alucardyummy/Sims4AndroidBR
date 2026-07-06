@@ -621,7 +621,15 @@ pointer-events: none;
 
 .btn-download:hover   { opacity: 0.9; }
 .btn-download:active  { transform: scale(0.97); }
-.btn-wicked           { background: #eb34e8; color: #fff; }
+.btn-wicked {
+  background: linear-gradient(135deg, #9d5fd6, #6a2fa8);
+  color: #fff;
+  box-shadow: 0 0 14px rgba(157, 95, 214, 0.45);
+}
+
+.btn-wicked:hover {
+  box-shadow: 0 0 20px rgba(157, 95, 214, 0.65);
+}
 
 .modal-aviso {
   margin-top: 12px;
