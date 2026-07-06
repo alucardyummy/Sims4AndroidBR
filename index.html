@@ -297,7 +297,7 @@
       <p class="modal-subtitulo">Como colocar o WickedWhims no TS4 (18+):</p>
       <p class="modal-texto">Caminho para onde mandar os arquivos <span>TURBODRIVER_WickedWhims_Scripts.ts4script</span> e <span>TURBODRIVER_WickedWhims_Tuning.package</span>:</p>
       <code class="modal-codigo">C:/Users/Container/Documents/Electronic Arts/The Sims 4/Mods</code>
-      <video class="step-video" preload="none" playsinline disablePictureInPicture controlsList="nodownload">
+      <video class="step-video" data-adulto="true" preload="none" playsinline disablePictureInPicture controlsList="nodownload">
         <source src="https://archive.org/download/dmmstrkc_20260612_0527/ccwcw.mp4" type="video/mp4">
       </video>
       <a href="https://wicked.cc/mods/admin/wickedwhims/#download" target="_blank" rel="noopener noreferrer" class="btn-download btn-wicked">Baixar WickedWhims</a>
@@ -692,7 +692,7 @@ function retornarAnimacoesHeavy() {
 
       modal.classList.add('fechando');
 
-      modal.querySelectorAll('.video-btn-custom, .video-barra, .video-faixinha-speed').forEach(el => {
+      modal.querySelectorAll('.video-btn-custom, .video-barra, .video-faixinha-speed, .video-tempo-corner, .video-aviso18').forEach(el => {
         el.classList.remove('visivel');
       });
       modal.querySelectorAll('.video-wrapper').forEach(v => v.style.opacity = '0');
@@ -713,6 +713,7 @@ function retornarAnimacoesHeavy() {
             v.pause();
             v.currentTime = 0;
             v.preload = 'none';
+            if (v._resetEstado) v._resetEstado();
           });
 
           if (modalAtual === id) modalAtual = null;
@@ -831,6 +832,7 @@ function criarPoeiraLivre(x, y) {
       let pressionando = false;
       let timerPressionar = null;
       let timerEsconder = null;
+      let jaTocado = false;
 
       const wrapper = document.createElement('div');
       wrapper.className = 'video-wrapper';
@@ -863,6 +865,31 @@ function criarPoeiraLivre(x, y) {
       seekIndicador.className = 'video-seek-indicator';
       wrapper.appendChild(seekIndicador);
 
+      const tempoCorner = document.createElement('div');
+      tempoCorner.className = 'video-tempo-corner';
+      tempoCorner.textContent = '0:00 / 0:00';
+      wrapper.appendChild(tempoCorner);
+
+      const isAdulto = video.dataset.adulto === 'true';
+      let avisoEl = null;
+      if (isAdulto) {
+        avisoEl = document.createElement('div');
+        avisoEl.className = 'video-aviso18';
+        avisoEl.innerHTML =
+          '<p><strong>Conteúdo +18</strong><br>Este tutorial mostra a instalação do WickedWhims, um mod com conteúdo adulto.</p>' +
+          '<button type="button">Ok</button>';
+        wrapper.appendChild(avisoEl);
+
+        avisoEl.addEventListener('click', (e) => e.stopPropagation());
+
+        avisoEl.querySelector('button').addEventListener('click', (e) => {
+          e.stopPropagation();
+          avisoEl.classList.remove('visivel');
+          sessionStorage.setItem('aviso18ok', '1');
+          video.play();
+        });
+      }
+
       let timerSeekIndicador = null;
       function mostrarSeekIndicador(texto, lado) {
         seekIndicador.textContent = texto;
@@ -880,6 +907,15 @@ function formatarTempo(s) {
   const seg = Math.floor(s % 60);
   return m + ':' + String(seg).padStart(2, '0');
 }
+
+function atualizarTempoCorner() {
+  const atual = formatarTempo(video.currentTime || 0);
+  const total = isNaN(video.duration) ? '0:00' : formatarTempo(video.duration);
+  tempoCorner.textContent = atual + ' / ' + total;
+}
+
+video.addEventListener('loadedmetadata', atualizarTempoCorner);
+video.addEventListener('timeupdate', atualizarTempoCorner);
 
 function atualizarTempoPorToque(e) {
   const rect = barra.getBoundingClientRect();
@@ -963,12 +999,16 @@ video.addEventListener('timeupdate', () => {
         btnCustom.classList.add('visivel');
         barra.classList.add('visivel');
         faixaVelocidade.classList.add('visivel');
+        tempoCorner.classList.add('visivel');
         clearTimeout(timerEsconder);
-        timerEsconder = setTimeout(() => {
-          btnCustom.classList.remove('visivel');
-          barra.classList.remove('visivel');
-          faixaVelocidade.classList.remove('visivel');
-        }, 2000);
+        if (jaTocado) {
+          timerEsconder = setTimeout(() => {
+            btnCustom.classList.remove('visivel');
+            barra.classList.remove('visivel');
+            faixaVelocidade.classList.remove('visivel');
+            tempoCorner.classList.remove('visivel');
+          }, 2000);
+        }
       }
 
       function esconderControlesAgora() {
@@ -976,7 +1016,13 @@ video.addEventListener('timeupdate', () => {
         btnCustom.classList.remove('visivel');
         barra.classList.remove('visivel');
         faixaVelocidade.classList.remove('visivel');
+        tempoCorner.classList.remove('visivel');
       }
+
+      video._resetEstado = () => {
+        jaTocado = false;
+        if (avisoEl) avisoEl.classList.remove('visivel');
+      };
 
       atualizarBotao();
       btnCustom.classList.add('visivel');
@@ -985,7 +1031,7 @@ video.addEventListener('timeupdate', () => {
       video._mostrarControles = mostrarControles;
       video._esconderControlesAgora = esconderControlesAgora;
 
-      video.addEventListener('play', () => { atualizarBotao(); mostrarControles(); });
+      video.addEventListener('play', () => { jaTocado = true; atualizarBotao(); mostrarControles(); });
       video.addEventListener('pause', () => { atualizarBotao(); mostrarControles(); });
 
       video.addEventListener('click', () => {
@@ -1004,7 +1050,16 @@ video.addEventListener('timeupdate', () => {
 
       btnCustom.addEventListener('click', (e) => {
         e.stopPropagation();
-        video.paused ? video.play() : video.pause();
+        if (video.paused) {
+          if (isAdulto && !sessionStorage.getItem('aviso18ok')) {
+            avisoEl.classList.add('visivel');
+            mostrarControles();
+            return;
+          }
+          video.play();
+        } else {
+          video.pause();
+        }
         atualizarBotao();
         mostrarControles();
       });
@@ -1150,6 +1205,7 @@ function toggleAcordeao(btn) {
       v.pause();
       v.currentTime = 0;
       v.preload = 'none';
+      if (v._resetEstado) v._resetEstado();
     });
   });
 
