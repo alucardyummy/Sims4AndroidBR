@@ -22,6 +22,7 @@ body {
   color: #fff;
   cursor: none;
   overflow-x: hidden;
+  position: relative;
 }
 
 ::selection {
@@ -36,7 +37,7 @@ body {
 
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: url('img/fundinho.webp') no-repeat center center;
   background-size: cover;
@@ -1108,6 +1109,77 @@ video::-webkit-media-controls-start-playback-button { display: none !important; 
 .video-seek-indicator.lado-esquerda { left: 16px; }
 .video-seek-indicator.lado-direita { right: 16px; }
 .video-seek-indicator.visivel { opacity: 1; }
+
+.video-tempo-corner {
+  position: absolute;
+  bottom: 26px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 6px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.video-tempo-corner.visivel { opacity: 1; }
+
+.video-aviso18 {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: 20px;
+  background: linear-gradient(160deg, rgba(74, 27, 112, 0.93), rgba(35, 12, 58, 0.96));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+
+.video-aviso18.visivel { opacity: 1; pointer-events: auto; }
+
+.video-aviso18 p {
+  color: #e8d5ff;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  max-width: 320px;
+  margin: 0;
+}
+
+.video-aviso18 p strong {
+  color: #d19cff;
+}
+
+.video-aviso18 button {
+  background: #9d5fd6;
+  color: #fff;
+  border: none;
+  padding: 8px 26px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(157, 95, 214, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.video-aviso18 button:active {
+  transform: scale(0.95);
+}
 
 #erros-bugs {
   margin: 40px 20px;
